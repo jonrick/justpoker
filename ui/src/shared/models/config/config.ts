@@ -18,7 +18,7 @@ export declare interface Config {
 
 export const CONFIGS: Configs = {
     DEV: {
-        SERVER_URL: '0.0.0.0',
+        SERVER_URL: '192.168.12.120',
         SERVER_PORT: 8080,
         CLIENT_NEED_PORT: true,
         SECURE_WS: false,

@@ -10,9 +10,11 @@ import WebSocket from 'ws';
 
 let serverUrl = 'https://justpoker.games';
 serverUrl = 'http://0.0.0.0:8080'; // uncomment for local
+serverUrl = 'http://192.168.12.120:8080'; // uncomment for local
 
 let wsUrl = 'wss://justpoker.games';
 wsUrl = 'ws://0.0.0.0:8080'; // uncomment for local
+wsUrl = 'ws://192.168.12.120:8080'; // uncomment for local
 const api = axios.create({
     baseURL: serverUrl,
 });
