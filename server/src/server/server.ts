@@ -83,7 +83,7 @@ class Server {
                 const lastActive = this.gameInstanceManager.getGameInstance(gameInstanceUUID)?.lastActive;
                 gameInstances[gameInstanceUUID] = {
                     WSCount: Object.values(group).length,
-                    link: `https://justpoker.games/table/${gameInstanceUUID}`,
+                    link: `https://poker.jonrick.com/table/${gameInstanceUUID}`,
                     lastActive: new Date(lastActive).toLocaleString('en-US', { timeZone: 'America/New_York' }),
                 };
             });
