@@ -26,7 +26,7 @@ export const CONFIGS: Configs = {
     },
 
     PROD: {
-        SERVER_URL: 'justpoker.games',
+        SERVER_URL: 'poker.jonrick.com',
         SERVER_PORT: 8080,
         CLIENT_NEED_PORT: false,
         SECURE_WS: true,
