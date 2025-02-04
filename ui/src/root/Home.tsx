@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const donationLink: string = "https://www.buymeacoffee.com/justpoker";
+const donationLink: string = "https://www.paypal.com/paypalme/jonrick";
 
 function Home(props) {
     const classes = useStyles();
