@@ -28,12 +28,12 @@ export const DEFAULT_PREFERENCES: UserPreferences = {
 
 const CUSTOM_PALETTE = {
     primary: {
-        main: teal['A400'],
-        light: teal['100'],
+        main: blue['A400'],
+        light: blue['100'],
     },
     secondary: {
-        main: orange['A200'],
-        light: orange['100'],
+        main: indigo['A200'],
+        light: indigo['100'],
     },
 };
 

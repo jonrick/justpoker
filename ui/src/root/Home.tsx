@@ -63,10 +63,10 @@ function Home(props) {
 
     return (
         <div className={classes.root}>
-            <LandingLogo className={classnames(classes.title, { [classes.left]: smallHeight })} />
-            <Typography className={classes.beta}>BETA!</Typography>
+            {/* <LandingLogo className={classnames(classes.title, { [classes.left]: smallHeight })} />
+            <Typography className={classes.beta}>BETA!</Typography> */ }
             <MakeGame />
-            <div className={classes.supportButtons}>
+            {/* <div className={classes.supportButtons}>
                 <Button variant="outlined" color="inherit" onClick={() => SET_openEmail(true)}>
                     Contact Us
                 </Button>
@@ -74,7 +74,7 @@ function Home(props) {
                     Donate
                 </Button>
             </div>
-            <EmailDialog open={openEmail} onClose={() => SET_openEmail(false)} />
+            <EmailDialog open={openEmail} onClose={() => SET_openEmail(false)} />*/ }
         </div>
     );
 }
