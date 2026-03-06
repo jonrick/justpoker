@@ -27,6 +27,7 @@
         "@mui/icons-material": "^7.3.9",
         "@mui/material": "^7.3.9",
         "@mui/styles": "^6.5.0",
+        "@reduxjs/toolkit": "^2.11.2",
         "animejs": "^3.2.0",
         "classnames": "^2.2.6",
         "color": "^3.1.2",

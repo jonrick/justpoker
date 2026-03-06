@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { setGameState, setTestGame } from '../store/rootReducer';
 
 import ErrorMessage from '../root/ErrorMessage';
 import Game from './Game';
@@ -37,12 +38,12 @@ function GameContainer(props): any {
 
     useEffect(() => {
         const onReceiveNewGame = (game: any) => {
-            dispatch({ type: 'SET_GAME_STATE', game: game });
+            dispatch(setGameState(game));
             if (!gameLoaded) setGameLoaded(true);
         };
 
         if (props.useTestGame) {
-            dispatch({ type: 'SET_TEST_GAME' });
+            dispatch(setTestGame());
             if (!gameLoaded) setGameLoaded(true);
         } else {
             const succ = WsServer.openWs(gameInstanceUUID as GameInstanceUUID);

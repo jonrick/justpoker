@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemePreferences, UserPreferences } from '../shared/models/ui/userPreferences';
 import cloneDeep from 'lodash/cloneDeep';
@@ -9,7 +9,7 @@ import GameContainer from '../game/GameContainer';
 import { createTheme } from '@mui/material/styles';
 
 import Home from './Home';
-import Ledger from '../ledger/Ledger';
+const Ledger = React.lazy(() => import('../ledger/Ledger'));
 import ErrorBoundary from './ErrorBoundry';
 import Color from 'color';
 
@@ -78,7 +78,7 @@ function App() {
                                 <Routes>
                                     <Route path="/table/test" element={<GameContainer useTestGame />} />
                                     <Route path="/table/:gameInstanceUUID" element={<GameContainer />} />
-                                    <Route path="/ledger/:gameInstanceUUID" element={<Ledger />} />
+                                    <Route path="/ledger/:gameInstanceUUID" element={<Suspense fallback={<div>Loading...</div>}><Ledger /></Suspense>} />
                                     <Route path="/" element={<Home />} />
                                 </Routes>
                             </Router>

@@ -18,9 +18,6 @@ import { UiPlayer } from '../shared/models/ui/uiState';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        root: {
-            right: '100%',
-        },
         avatarIcon: {
             height: '5vmin',
             width: '5vmin',
@@ -93,11 +90,11 @@ function PlayerMenu(props) {
     }
     return (
         <Menu
-            className={classes.root}
             anchorEl={anchorEl}
             open={Boolean(anchorEl)}
             onClose={handleClose}
-            anchorOrigin={{ vertical: 'center', horizontal: 'right' }}
+            anchorOrigin={{ vertical: 'center', horizontal: 'left' }}
+            transformOrigin={{ vertical: 'center', horizontal: 'right' }}
         >
             <AddChipDialog open={chipsDialog} handleClose={handleCloseDialog} name={name} stack={stack} uuid={uuid} />
             {isHeroAdmin ? <MenuItem onClick={() => setChipsDialog(true)}>Modify Chips</MenuItem> : null}

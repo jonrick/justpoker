@@ -147,14 +147,6 @@ export const CUSTOM_THEME = {
                 },
             },
         },
-        MuiTypography: {
-            styleOverrides: {
-                root: {
-                    color: 'inherit',
-                    fontSize: '1vmin',
-                },
-            },
-        },
         MuiOutlinedInput: {
             styleOverrides: {
                 root: {

@@ -1,5 +1,5 @@
 import get from 'lodash/get';
-import queryString, { ParsedQuery } from 'query-string';
+
 import {
     ClientWsMessage,
     ClientChatMessage,
@@ -37,15 +37,12 @@ export class WsServer {
         const wsURL = `ws${config.SECURE_WS ? 's' : ''}://${config.SERVER_URL}${
             config.CLIENT_NEED_PORT ? `:${config.SERVER_PORT}` : ''
         }`;
-        const wsURI = {
-            url: wsURL,
-            query: {
-                clientUUID: window.localStorage.getItem(clientUUIDCookieID) || null,
-                gameInstanceUUID: gameInstanceUUID || null,
-            } as ParsedQuery,
-        };
+        const url = new URL(wsURL);
+        const storedClientUUID = window.localStorage.getItem(clientUUIDCookieID);
+        if (storedClientUUID) url.searchParams.set('clientUUID', storedClientUUID);
+        if (gameInstanceUUID) url.searchParams.set('gameInstanceUUID', gameInstanceUUID);
 
-        WsServer.ws = new WebSocket(queryString.stringifyUrl(wsURI), []);
+        WsServer.ws = new WebSocket(url.toString(), []);
         WsServer.ws.onmessage = WsServer.onGameMessage;
         WsServer.ws.onclose = WsServer.onWSClose;
         WsServer.timeLastSentMsg = getEpochTimeMs();

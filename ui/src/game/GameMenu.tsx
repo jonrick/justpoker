@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import queryString from 'query-string';
+
 import classnames from 'classnames';
 import { useSelector } from 'react-redux';
 import { selectMenuButtons, selectGameParameters, isHeroAdminSelector, selectUseCents } from '../store/selectors';
@@ -113,7 +113,7 @@ function GameMenu(props) {
     };
 
     const handleOpenLedger = () => {
-        const stringifiedUrl = queryString.stringifyUrl({ url: `/ledger/${gameInstanceUUID}`, query: {} });
+        const stringifiedUrl = `/ledger/${gameInstanceUUID}`;
         const newWindow: any = window.open(stringifiedUrl, 'JustPoker Ledger', `width=${window.innerWidth},height=600`);
         newWindow.useCents = useCents;
     };

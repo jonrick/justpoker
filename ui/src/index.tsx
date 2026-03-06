@@ -4,7 +4,7 @@ import './index.css';
 import App from './root/App';
 
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
 import rootReducer from './store/rootReducer';
 
 import './fonts/Avenir.otf';
@@ -12,7 +12,7 @@ import './fonts/Futura.ttf';
 import './fonts/FuturaBold.ttf';
 import './fonts/FuturaItalic.ttf';
 
-export const store = createStore(rootReducer);
+export const store = configureStore({ reducer: rootReducer });
 
 const container = document.getElementById('root');
 const root = createRoot(container!);
