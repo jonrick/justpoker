@@ -29,17 +29,20 @@ function TextFieldWrap(props) {
             if (current === '') {
                 return 0;
             }
-            let intValue = parseInt(current, 10);
-            if (Number.isNaN(intValue) || current <= 0) {
+            let val = parseFloat(current);
+            if (Number.isNaN(val) || val <= 0) {
                 return 0;
             } else {
+                if (useCents || divideBy100) {
+                    val = Math.round(val * 100);
+                }
                 if (!Number.isNaN(max) && maxStrict) {
-                    intValue = Math.min(intValue, max);
+                    val = Math.min(val, max);
                 }
                 if (!Number.isNaN(min) && minStrict) {
-                    intValue = Math.max(intValue, min);
+                    val = Math.max(val, min);
                 }
-                return intValue;
+                return val;
             }
         }
         return current;
@@ -56,8 +59,11 @@ function TextFieldWrap(props) {
     function getRenderValue() {
         const value = props.value;
         if (type === 'number') {
-            if (value === 0) {
+            if (value === 0 || value === undefined || value === null) {
                 return '';
+            }
+            if (useCents || divideBy100) {
+                return (value / 100).toString();
             }
         }
         return value;
@@ -101,12 +107,9 @@ const DivideBy100Formatter = React.forwardRef(function DivideBy100Formatter(prop
                 });
             }}
             valueIsNumericString
-            format={(val) => {
-                let num = parseInt(val);
-                if (maxStrict && !Number.isNaN(max)) num = Math.min(num, max);
-                num = num / 100;
-                return num.toFixed(2);
-            }}
+            thousandSeparator=","
+            decimalScale={2}
+            fixedDecimalScale
             type="tel"
         />
     );

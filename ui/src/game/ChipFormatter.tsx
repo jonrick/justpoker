@@ -13,7 +13,7 @@ export function useChipFormatter(usePassCents?: boolean): (number) => string {
 
 function formatCents(amt: number): string {
     const newAmt = amt / 100;
-    return newAmt.toFixed(2).toLocaleString();
+    return newAmt.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 
 function formatNormal(amt: number): string {
