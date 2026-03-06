@@ -27,7 +27,7 @@ export class ChatService {
 
     lastMessage: ChatMessage | null;
 
-    constructor(private readonly gameStateManager: GameStateManager) { }
+    constructor(private readonly gameStateManager: GameStateManager) {}
 
     loadChatState(chatLog: ChatLog) {
         this.chatLog = chatLog;
@@ -122,9 +122,10 @@ export class ChatService {
         this.lastMessage = {
             ...this.serverMessageTemplate(),
             content: `An admin is setting ${player.name}'s stack from ${originalChips} 
-                to ${chipAmt} chip${chipAmt > 1 ? 's' : ''}.${this.gameStateManager.isPlayerInHand(playerUUID)
-                    ? ' The change will take place at the beginning of the next hand.'
-                    : ''
+                to ${chipAmt} chip${chipAmt > 1 ? 's' : ''}.${
+                    this.gameStateManager.isPlayerInHand(playerUUID)
+                        ? ' The change will take place at the beginning of the next hand.'
+                        : ''
                 } `,
         };
         this.chatLog.messages.push(this.lastMessage);

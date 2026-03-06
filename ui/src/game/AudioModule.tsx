@@ -5,7 +5,7 @@ import { WsServer } from '../api/ws';
 
 // TODO if user can pick themes, it would essentially just change the src_path. audio init
 // should be put in function to allow for reload in this case.
-const SRC_PATH = `${process.env.PUBLIC_URL}/sounds/default`;
+const SRC_PATH = `/sounds/default`;
 const EXT = 'mp3';
 
 const AUDIO_PATHS = Object.entries(SoundByte).map(([soundByte, filename], _) => [
