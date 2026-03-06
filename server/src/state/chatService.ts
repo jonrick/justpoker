@@ -15,7 +15,7 @@ import { JP_VERSION } from '../../../ui/src/shared/util/consts';
 
 const changeNameCommandRegEx = /\/name\s(.+)$/;
 
-const welcomeMessage = `Welcome to Poker w/Jon ${JP_VERSION}! Check out the menu in the top left to change the app's appearance, and game parameters. May the suits be with you.`;
+const welcomeMessage = `Welcome to JustPoker ${JP_VERSION}! Check out the menu in the top left to change the app's appearance, and game parameters. May the suits be with you.`;
 
 const replenishTimeBankMessage = 'Replenishing one time bank for all players.';
 
@@ -27,7 +27,7 @@ export class ChatService {
 
     lastMessage: ChatMessage | null;
 
-    constructor(private readonly gameStateManager: GameStateManager) {}
+    constructor(private readonly gameStateManager: GameStateManager) { }
 
     loadChatState(chatLog: ChatLog) {
         this.chatLog = chatLog;
@@ -122,10 +122,9 @@ export class ChatService {
         this.lastMessage = {
             ...this.serverMessageTemplate(),
             content: `An admin is setting ${player.name}'s stack from ${originalChips} 
-                to ${chipAmt} chip${chipAmt > 1 ? 's' : ''}.${
-                    this.gameStateManager.isPlayerInHand(playerUUID)
-                        ? ' The change will take place at the beginning of the next hand.'
-                        : ''
+                to ${chipAmt} chip${chipAmt > 1 ? 's' : ''}.${this.gameStateManager.isPlayerInHand(playerUUID)
+                    ? ' The change will take place at the beginning of the next hand.'
+                    : ''
                 } `,
         };
         this.chatLog.messages.push(this.lastMessage);
