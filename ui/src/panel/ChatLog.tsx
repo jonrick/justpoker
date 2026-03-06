@@ -196,7 +196,7 @@ function ChatLog(props: ChatLogProps) {
                 InputProps={{ classes: { input: classes.messageInput } }}
                 onKeyPress={(event) => onTextAreaPressEnter(event)}
                 multiline={true}
-                rowsMax={7}
+                maxRows={7}
                 maxChars={300}
             />
         );

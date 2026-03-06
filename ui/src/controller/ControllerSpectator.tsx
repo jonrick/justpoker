@@ -40,7 +40,6 @@ function ControllerSpectator(props) {
                 onClick={() => setDialogOpen(true)}
                 variant="contained"
                 color="primary"
-                autoFocus
                 id={SELENIUM_TAGS.IDS.JOIN_GAME_BUTTON}
             >
                 Join Game

@@ -87,7 +87,7 @@ function GameMenu(props) {
     const isHeroAdmin = useSelector(isHeroAdminSelector);
     const useCents = useSelector(selectUseCents);
 
-    const { gameInstanceUUID } = useParams();
+    const { gameInstanceUUID } = useParams<{ gameInstanceUUID: string }>();
 
     const [settingsOpen, setSettingsOpen] = React.useState(false);
     const [gameParametersOpen, SET_gameParametersOpen] = React.useState(false);

@@ -14,12 +14,12 @@ export class TimerManager {
         this.timerGroup = timerGroup;
     }
 
-    setMessageAnnouncementTimer(fn: Function, timeout: number) {
+    setMessageAnnouncementTimer(fn: () => void, timeout: number) {
         this.timerGroup.messageAnnouncementTimer = new PauseableTimer(() => fn(), timeout);
     }
 
     /** There can only be one stateTimer per game instance live at any moment. */
-    setStateTimer(fn: Function, timeout: number) {
+    setStateTimer(fn: () => void, timeout: number) {
         this.cancelStateTimer();
         this.timerGroup.stateTimer = new PauseableTimer(() => fn(), timeout);
     }
@@ -28,7 +28,7 @@ export class TimerManager {
     }
 
     /** There can only be one timeBankReplenish timer per game instance live at any moment.*/
-    setTimeBankReplenishInterval(fn: Function, timeout: number) {
+    setTimeBankReplenishInterval(fn: () => void, timeout: number) {
         this.cancelTimeBankReplenishTimer();
         this.timerGroup.timeBankReplenishTimer = new PauseableTimer(() => fn(), timeout, true);
     }
@@ -43,7 +43,7 @@ export class TimerManager {
     }
 
     /** There can only be one incrementBlindsSchedule timer per game instance live at any moment.*/
-    setIncrementBlindsScheduleInterval(fn: Function, timeout: number) {
+    setIncrementBlindsScheduleInterval(fn: () => void, timeout: number) {
         this.cancelIncrementBlindsScheduleInterval();
         this.timerGroup.incrementBlindsScheduleTimer = new PauseableTimer(() => fn(), timeout, true);
     }

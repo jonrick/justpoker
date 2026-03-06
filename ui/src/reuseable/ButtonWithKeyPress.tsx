@@ -7,7 +7,7 @@ import classnames from 'classnames';
 const useStyles = makeStyles((theme: Theme) => {
     return createStyles({
         active: {
-            ...get(theme, 'overrides.MuiButton.root["&:hover"]', {}),
+            ...(get(theme, 'overrides.MuiButton.root["&:hover"]', {}) as any),
         },
         '@keyframes scale': {
             '0%': {

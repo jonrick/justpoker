@@ -123,10 +123,10 @@ export class ChatService {
             ...this.serverMessageTemplate(),
             content: `An admin is setting ${player.name}'s stack from ${originalChips} 
                 to ${chipAmt} chip${chipAmt > 1 ? 's' : ''}.${
-                this.gameStateManager.isPlayerInHand(playerUUID)
-                    ? ' The change will take place at the beginning of the next hand.'
-                    : ''
-            } `,
+                    this.gameStateManager.isPlayerInHand(playerUUID)
+                        ? ' The change will take place at the beginning of the next hand.'
+                        : ''
+                } `,
         };
         this.chatLog.messages.push(this.lastMessage);
         this.gameStateManager.addUpdatedKeys(ServerStateKey.CHAT);

@@ -142,8 +142,8 @@ export class StateConverter {
             handLogEntries: sendAll
                 ? this.gameInstanceLogService.serializeAllHandLogEntries(heroPlayerUUID)
                 : this.gameUpdated() && handLogEntry
-                ? [handLogEntry]
-                : [],
+                  ? [handLogEntry]
+                  : [],
         };
         return uiState;
     }

@@ -17,7 +17,7 @@ import Animoji from '../reuseable/Animoji';
 import { AnimojiKeys } from '../shared/models/ui/assets';
 import { NOT_RELATIVE_THEME } from '../style/Theme';
 import { ThemeProvider } from '@material-ui/core/styles';
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
 import { withRouter } from 'react-router';
 
 const useStyles = makeStyles((theme) => ({
@@ -159,7 +159,7 @@ function MakeGame(props) {
     if (canCreate === false) return <div className={classes.root} />; // prevents flash of normal screen
 
     return (
-        <ThemeProvider theme={createMuiTheme(NOT_RELATIVE_THEME)}>
+        <ThemeProvider theme={createTheme(NOT_RELATIVE_THEME)}>
             <div className={classes.root}>
                 <div className={classes.fieldCont}>
                     <TextFieldWrap

@@ -118,7 +118,7 @@ function SetChipDialog(props) {
             </DialogContent>
             <DialogActions>
                 <Button onClick={handleClose}>Cancel</Button>
-                <Button onClick={onSubmit} disabled={!canSubmit()} color="primary" autoFocus>
+                <Button onClick={onSubmit} disabled={!canSubmit()} color="primary">
                     {mode} Chips
                 </Button>
             </DialogActions>

@@ -1,11 +1,6 @@
-import React, { useState } from 'react';
-import classnames from 'classnames';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import MakeGame from './MakeGame';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { Button, Typography } from '@material-ui/core';
-import EmailDialog from '../reuseable/EmailDialog';
-import LandingLogo from './LandingLogo';
 import { indigo } from '@material-ui/core/colors';
 
 const useStyles = makeStyles((theme) => ({
@@ -54,12 +49,8 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const donationLink: string = "https://www.paypal.com/paypalme/jonrick";
-
 function Home(props) {
     const classes = useStyles();
-    const [openEmail, SET_openEmail] = useState(false);
-    const smallHeight = useMediaQuery('(max-height:820px)');
 
     return (
         <div className={classes.root}>

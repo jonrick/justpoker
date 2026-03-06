@@ -12,8 +12,7 @@
         "typeRoots": ["node_modules/@types"],
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
-        "lib": ["es6", "dom", "esnext"],
-        "types": ["reflect-metadata"]
+        "lib": ["es6", "dom", "esnext"]
     },
     "include": ["src/**/*"],
     "exclude": ["dist", "node_modules"]

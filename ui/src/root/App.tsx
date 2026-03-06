@@ -5,7 +5,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import { CUSTOM_THEME, DEFAULT_PREFERENCES } from '../style/Theme';
 import { ThemeProvider } from '@material-ui/core/styles';
 import GameContainer from '../game/GameContainer';
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
 
 import Home from './Home';
 import Ledger from '../ledger/Ledger';
@@ -61,7 +61,7 @@ function App() {
     return (
         <ErrorBoundary>
             <ThemeSetter.Provider value={{ curPrefs: pref, themeSetter: setNewTheme }}>
-                <ThemeProvider theme={createMuiTheme(theme)}>
+                <ThemeProvider theme={createTheme(theme)}>
                     <Router>
                         <Switch>
                             <Route exact path="/table/test" render={(props) => <GameContainer useTestGame />} />

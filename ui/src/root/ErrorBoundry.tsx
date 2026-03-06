@@ -3,7 +3,7 @@ import { reportFrontEndError, sendMail } from '../api/http';
 import { store } from '../index';
 import { EmailMessage } from '../shared/models/system/email';
 
-class ErrorBoundary extends React.Component {
+class ErrorBoundary extends React.Component<{ children?: React.ReactNode }> {
     constructor(props) {
         super(props);
         this.state = { error: null, errorInfo: null, email: '', userText: '', mailResponse: '' };

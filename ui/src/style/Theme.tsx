@@ -7,13 +7,17 @@ import grey from '@material-ui/core/colors/grey';
 import blue from '@material-ui/core/colors/blue';
 import teal from '@material-ui/core/colors/teal';
 import indigo from '@material-ui/core/colors/indigo';
-import orange from '@material-ui/core/colors/orange';
 import red from '@material-ui/core/colors/red';
 import { Background } from './colors';
 import cloneDeep from 'lodash/cloneDeep';
 
-declare module '@material-ui/core/styles/createMuiTheme' {
+import '@material-ui/core/styles';
+
+declare module '@material-ui/core/styles/createTheme' {
     interface Theme {
+        custom?: any;
+    }
+    interface ThemeOptions {
         custom?: any;
     }
 }

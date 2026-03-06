@@ -80,16 +80,22 @@ export class GamePlayService {
 
     createTimeBankReplenishTimer() {
         const gameInstanceUUID = this.context.getGameInstanceUUID();
-        this.timerManager.setTimeBankReplenishInterval(() => {
-            this.processEventCallback(createTimeBankReplenishEvent(gameInstanceUUID));
-        }, this.gsm.getTimeBankReplenishIntervalMinutes() * 60 * 1000);
+        this.timerManager.setTimeBankReplenishInterval(
+            () => {
+                this.processEventCallback(createTimeBankReplenishEvent(gameInstanceUUID));
+            },
+            this.gsm.getTimeBankReplenishIntervalMinutes() * 60 * 1000,
+        );
     }
 
     createBlindScheduleTimer() {
         const gameInstanceUUID = this.context.getGameInstanceUUID();
-        this.timerManager.setIncrementBlindsScheduleInterval(() => {
-            this.processEventCallback(createIncrementBlindsScheduleEvent(gameInstanceUUID));
-        }, this.gsm.getBlindsIntervalMinutes() * 60 * 1000);
+        this.timerManager.setIncrementBlindsScheduleInterval(
+            () => {
+                this.processEventCallback(createIncrementBlindsScheduleEvent(gameInstanceUUID));
+            },
+            this.gsm.getBlindsIntervalMinutes() * 60 * 1000,
+        );
     }
 
     pauseGameTimers() {
@@ -266,8 +272,8 @@ export class GamePlayService {
             isPlayerAllIn
                 ? BettingRoundActionType.ALL_IN
                 : playerPlacingBlindBetUUID
-                ? BettingRoundActionType.PLACE_BLIND
-                : BettingRoundActionType.BET,
+                  ? BettingRoundActionType.PLACE_BLIND
+                  : BettingRoundActionType.BET,
         );
 
         const previousRaise = this.gsm.getPreviousRaise();

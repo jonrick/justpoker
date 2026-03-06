@@ -1,5 +1,5 @@
 import { inspect } from 'util'; // or directly
-const winston = require('winston');
+import * as winston from 'winston';
 
 // LOG LEVEL BEST PRACTICES
 //     error: 0     logged in production
@@ -65,7 +65,7 @@ const defaultDebugFuncParams: DebugFuncParams = {
 
 export function debugFunc(paramsArg?: DebugFuncParams) {
     const params = { ...defaultDebugFuncParams, ...paramsArg };
-    return function decorator(target: Object, key: string | symbol, descriptor: PropertyDescriptor) {
+    return function decorator(target: Record<string, any>, key: string | symbol, descriptor: PropertyDescriptor) {
         const original = descriptor.value;
         if (typeof original === 'function') {
             descriptor.value = function (...args: any[]) {

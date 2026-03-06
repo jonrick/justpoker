@@ -163,7 +163,7 @@ function SettingsDialog(props) {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
-                    <Button onClick={onSave} color="primary" autoFocus>
+                    <Button onClick={onSave} color="primary">
                         Save
                     </Button>
                 </DialogActions>

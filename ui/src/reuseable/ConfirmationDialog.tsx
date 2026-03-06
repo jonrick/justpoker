@@ -30,7 +30,7 @@ function ConfirmationDialog(props: SimpleDialogProps) {
             <DialogActions>
                 {onCancel ? <Button onClick={onCancel}>Cancel</Button> : null}
                 {onConfirm ? (
-                    <Button onClick={onConfirm} color="primary" autoFocus>
+                    <Button onClick={onConfirm} color="primary">
                         Confirm
                     </Button>
                 ) : null}

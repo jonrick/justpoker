@@ -152,7 +152,7 @@ let scrollFixer;
 function HandLog(props: HandLogProps) {
     const classes = useStyles();
     const { hideChatLog, hideHandLog } = props;
-    const { gameInstanceUUID } = useParams();
+    const { gameInstanceUUID } = useParams<{ gameInstanceUUID: string }>();
 
     const [handLogEntries, setHandLogEntries] = useState([] as UiHandLogEntry[]);
     const [currentHandNumber, setCurrentHandNumber] = useState(0);

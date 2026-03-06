@@ -33,7 +33,7 @@ function GameContainer(props): any {
     const [error, setError] = useState<ErrorDisplay | undefined>();
     const [wsConnClosed, SET_wsConnClosed] = useState(false);
 
-    const { gameInstanceUUID } = useParams();
+    const { gameInstanceUUID } = useParams<{ gameInstanceUUID: string }>();
 
     useEffect(() => {
         const onReceiveNewGame = (game: any) => {

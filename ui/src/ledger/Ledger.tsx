@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 function Ledger(props) {
     const classes = useStyles();
     const [ledger, setLedger] = useState<UILedger>([]);
-    const { gameInstanceUUID } = useParams();
+    const { gameInstanceUUID } = useParams<{ gameInstanceUUID: string }>();
     const [error, setError] = useState<ErrorDisplay | undefined>();
 
     useEffect(() => {
