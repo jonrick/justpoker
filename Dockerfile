@@ -6,7 +6,7 @@
 
 ## In order to run the container, run:
 ## $ docker run -d justpoker
-FROM node:12
+FROM node:20
 
 # set build_env default
 ARG build_env=PROD
@@ -18,8 +18,8 @@ COPY . ./
 
 # ui
 WORKDIR /justpoker/ui
-# set env for react front-end
-RUN echo REACT_APP_ENVIRONMENT=${build_env} > .env
+# set env for vite front-end
+RUN echo VITE_ENVIRONMENT=${build_env} > .env
 RUN npm install
 RUN npm run build
 
