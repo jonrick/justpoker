@@ -2,11 +2,13 @@ import React from 'react';
 import 'emoji-mart/css/emoji-mart.css';
 import { Picker } from 'emoji-mart';
 import classnames from 'classnames';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import Popper from '@material-ui/core/Popper';
-import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
-import IconButton from '@material-ui/core/IconButton';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import { Theme } from '@mui/material/styles';
+import makeStyles from '@mui/styles/makeStyles';
+import createStyles from '@mui/styles/createStyles';
+import Popper from '@mui/material/Popper';
+import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
+import IconButton from '@mui/material/IconButton';
+import ClickAwayListener from '@mui/material/ClickAwayListener';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -33,7 +35,10 @@ export default function EmojiPicker(props) {
 
     return (
         <>
-            <IconButton className={classnames(classes.button, className)} onClick={handleClick}>
+            <IconButton
+                className={classnames(classes.button, className)}
+                onClick={handleClick}
+                size="large">
                 <EmojiEmotionsIcon />
             </IconButton>
             <Popper open={open} anchorEl={anchorEl} placement={placement} className={classes.popper}>

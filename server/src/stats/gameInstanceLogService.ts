@@ -137,7 +137,7 @@ export class GameInstanceLogService {
     updatePlayerCards(playerUUID: PlayerUUID) {
         const playerSummary = this.currentHandLogEntry.playerSummaries.get(playerUUID);
         if (playerSummary) {
-            playerSummary.holeCards = [...this.gameStateManager.getHoleCards(playerUUID)];
+            playerSummary.holeCards = [...(this.gameStateManager.getHoleCards(playerUUID) || [])];
             playerSummary.wasDealtIn = true;
         } else {
             logger.error(
@@ -159,8 +159,8 @@ export class GameInstanceLogService {
             playerUUID: player.uuid,
             playerName: player.name,
             startingChips: player.chips,
-            holeCards: [...player.holeCards],
-            wasDealtIn: player.holeCards.length > 0,
+            holeCards: [...(player.holeCards || [])],
+            wasDealtIn: player.holeCards ? player.holeCards.length > 0 : false,
             totalChipDeltaForHand: 0,
             position: PlayerPosition.NOT_PLAYING,
             seatNumber: player.seatNumber,

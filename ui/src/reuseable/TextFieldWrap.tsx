@@ -1,5 +1,5 @@
 import React from 'react';
-import TextField from '@material-ui/core/TextField';
+import TextField from '@mui/material/TextField';
 import NumberFormat from 'react-number-format';
 import { useSelector } from 'react-redux';
 import { selectUseCents } from '../store/selectors';
@@ -86,13 +86,13 @@ function TextFieldWrap(props) {
     );
 }
 
-function DivideBy100Formatter(props) {
+const DivideBy100Formatter = React.forwardRef(function DivideBy100Formatter(props: any, ref) {
     const { inputRef, onChange, max, maxStrict, ...other } = props;
 
     return (
         <NumberFormat
             {...other}
-            getInputRef={inputRef}
+            getInputRef={ref || inputRef}
             onValueChange={(values) => {
                 onChange({
                     target: {
@@ -110,6 +110,6 @@ function DivideBy100Formatter(props) {
             type="tel"
         />
     );
-}
+});
 
 export default TextFieldWrap;

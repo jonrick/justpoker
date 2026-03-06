@@ -1,8 +1,8 @@
 import React from 'react';
 import classnames from 'classnames';
 import ChipStack from './ChipStack';
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+import makeStyles from '@mui/styles/makeStyles';
+import Typography from '@mui/material/Typography';
 import { useChipFormatter } from '../game/ChipFormatter';
 
 const useStyles = makeStyles((theme) => ({

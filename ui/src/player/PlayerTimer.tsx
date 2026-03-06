@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { playTimerWarning } from '../game/AudioModule';
 import { animateTimeBankButton } from '../game/AnimiationModule';
 
-import { Typography } from '@material-ui/core';
+import { Typography } from '@mui/material';
 
 function getPercentTimeRemaining(timeElapsed: number, timeLimit: number): number {
     const timeElapsedPercentage = (timeElapsed * 100.0) / timeLimit;

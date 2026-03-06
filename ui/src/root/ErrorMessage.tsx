@@ -1,7 +1,7 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@mui/styles/makeStyles';
 import { ErrorDisplay } from '../shared/models/ui/uiState';
-import Typography from '@material-ui/core/Typography';
+import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({

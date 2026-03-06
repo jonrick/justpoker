@@ -1,10 +1,13 @@
 import React from 'react';
 
 import classnames from 'classnames';
-import { createStyles, makeStyles, Theme, withStyles, useTheme } from '@material-ui/core/styles';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import Button from '@material-ui/core/Button';
-import Slider from '@material-ui/core/Slider';
+import { Theme, useTheme } from '@mui/material/styles';
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
+import withStyles from '@mui/styles/withStyles';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import Button from '@mui/material/Button';
+import Slider from '@mui/material/Slider';
 import Color from 'color';
 
 import TextFieldWrap from '../reuseable/TextFieldWrap';

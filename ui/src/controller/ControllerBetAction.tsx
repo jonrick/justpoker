@@ -4,9 +4,11 @@ import { controllerSelector, selectGameParameters } from '../store/selectors';
 
 import Color from 'color';
 import classnames from 'classnames';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
+import { Theme } from '@mui/material/styles';
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
 
 import { BettingRoundActionType } from '../shared/models/game/betting';
 import ControllerBetSizer from './ControllerBetSizer';

@@ -1,8 +1,10 @@
 import React from 'react';
 
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import { Tooltip } from '@material-ui/core';
-import InfoIcon from '@material-ui/icons/Help';
+import { Theme } from '@mui/material/styles';
+import makeStyles from '@mui/styles/makeStyles';
+import createStyles from '@mui/styles/createStyles';
+import { Tooltip } from '@mui/material';
+import InfoIcon from '@mui/icons-material/Help';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({

@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import classnames from 'classnames';
 
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import Button from '@material-ui/core/Button';
-import DeleteIcon from '@material-ui/icons/Delete';
-import { Select, MenuItem, Typography, Checkbox, FormControlLabel, IconButton, Tooltip } from '@material-ui/core';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import { Theme } from '@mui/material/styles';
+import makeStyles from '@mui/styles/makeStyles';
+import createStyles from '@mui/styles/createStyles';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { Select, MenuItem, Typography, Checkbox, FormControlLabel, IconButton, Tooltip } from '@mui/material';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
 
 import { MIN_VALUES, MAX_VALUES } from '../shared/util/consts';
 import { GameType, MaxBuyinType, GameParameters } from '../shared/models/game/game';
@@ -155,6 +157,7 @@ function GameParamatersDialog(props) {
                     max={MAX_VALUES.SMALL_BLIND}
                     type="number"
                     divideBy100={useCents}
+                    InputLabelProps={{ shrink: true }}
                 />
                 <TextFieldWrap
                     className={classes.field}
@@ -166,6 +169,7 @@ function GameParamatersDialog(props) {
                     max={MAX_VALUES.BIG_BLIND}
                     type="number"
                     divideBy100={useCents}
+                    InputLabelProps={{ shrink: true }}
                 />
                 <TextFieldWrap
                     className={classes.field}
@@ -177,6 +181,7 @@ function GameParamatersDialog(props) {
                     max={MAX_VALUES.BUY_IN}
                     type="number"
                     divideBy100={useCents}
+                    InputLabelProps={{ shrink: true }}
                 />
                 <TextFieldWrap
                     className={classes.field}
@@ -188,6 +193,7 @@ function GameParamatersDialog(props) {
                     min={MIN_VALUES.BUY_IN}
                     max={MAX_VALUES.BUY_IN}
                     divideBy100={useCents}
+                    InputLabelProps={{ shrink: true }}
                 />
                 <FormControlLabel
                     className={classes.field}
@@ -217,7 +223,6 @@ function GameParamatersDialog(props) {
                         radioGroupProps={{ row: true }}
                     />
                 </div>
-
                 <div className={classes.field}>
                     <IconTooltip
                         className={classes.iconTip}
@@ -257,6 +262,7 @@ function GameParamatersDialog(props) {
                         type="number"
                         InputLabelProps={{
                             style: { width: '120%' },
+                            shrink: true,
                         }}
                     />
                 </div>
@@ -282,6 +288,7 @@ function GameParamatersDialog(props) {
                                     max={MAX_VALUES.SMALL_BLIND}
                                     InputLabelProps={{
                                         style: { width: '120%' },
+                                        shrink: true,
                                     }}
                                 />
                                 <TextFieldWrap
@@ -296,9 +303,13 @@ function GameParamatersDialog(props) {
                                     max={MAX_VALUES.BIG_BLIND}
                                     InputLabelProps={{
                                         style: { width: '120%' },
+                                        shrink: true,
                                     }}
                                 />
-                                <IconButton className={classes.iconTip} onClick={removeBlindsLevel(index)}>
+                                <IconButton
+                                    className={classes.iconTip}
+                                    onClick={removeBlindsLevel(index)}
+                                    size="large">
                                     <DeleteIcon />
                                 </IconButton>
                             </div>
@@ -344,6 +355,7 @@ function GameParamatersDialog(props) {
                     variant="standard"
                     min={MIN_VALUES.MAX_PLAYERS}
                     max={MAX_VALUES.MAX_PLAYERS}
+                    InputLabelProps={{ shrink: true }}
                 />
                 <TextFieldWrap
                     className={classes.field}
@@ -354,6 +366,7 @@ function GameParamatersDialog(props) {
                     min={MIN_VALUES.TIME_TO_ACT}
                     max={MAX_VALUES.TIME_TO_ACT}
                     type="number"
+                    InputLabelProps={{ shrink: true }}
                 />
 
                 <div className={classes.field}>
@@ -425,6 +438,7 @@ function GameParamatersDialog(props) {
                         disabled={!allowTimeBanks}
                         min={MIN_VALUES.NUMBER_TIME_BANKS}
                         max={MAX_VALUES.NUMBER_TIME_BANKS}
+                        InputLabelProps={{ shrink: true }}
                     />
                 </div>
                 <div className={classes.field}>
@@ -443,6 +457,7 @@ function GameParamatersDialog(props) {
                         disabled={!allowTimeBanks}
                         min={MIN_VALUES.TIME_BANK_TIME}
                         max={MAX_VALUES.TIME_BANK_TIME}
+                        InputLabelProps={{ shrink: true }}
                     />
                 </div>
                 <div className={classes.field}>
@@ -463,6 +478,7 @@ function GameParamatersDialog(props) {
                         disabled={!allowTimeBanks}
                         min={MIN_VALUES.TIME_BANK_REPLENISH_INTERVAL}
                         max={MAX_VALUES.TIME_BANK_REPLENISH_INTERVAL}
+                        InputLabelProps={{ shrink: true }}
                     />
                 </div>
             </div>

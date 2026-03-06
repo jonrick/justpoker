@@ -6,13 +6,15 @@ import { WsServer } from '../api/ws';
 import { ClientActionType, ClientWsMessageRequest } from '../shared/models/api/api';
 import IconPicker from '../reuseable/IconPicker';
 
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
-import Paper from '@material-ui/core/Paper';
-import MoodIcon from '@material-ui/icons/Mood';
+import { Theme } from '@mui/material/styles';
+import makeStyles from '@mui/styles/makeStyles';
+import createStyles from '@mui/styles/createStyles';
+import IconButton from '@mui/material/IconButton';
+import Paper from '@mui/material/Paper';
+import MoodIcon from '@mui/icons-material/Mood';
 import Animoji from '../reuseable/Animoji';
 import { AnimojiKeysDefaultRecentlyUsed, AnimojiKeys } from '../shared/models/ui/assets';
-import MoreHoriz from '@material-ui/icons/MoreHoriz';
+import MoreHoriz from '@mui/icons-material/MoreHoriz';
 import { useStickyState } from '../utils';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -137,13 +139,13 @@ function ReactionPicker(props) {
                                 key={reaction}
                                 className={classes.iconButton}
                                 onClick={() => onSelectReaction({ reaction })}
-                            >
+                                size="large">
                                 <Animoji reaction={reaction} />
                             </IconButton>
                         ))}
                     </>
                 ) : (
-                    <IconButton className={classes.iconButton}>
+                    <IconButton className={classes.iconButton} size="large">
                         <MoodIcon className={classes.icon} />
                     </IconButton>
                 )}

@@ -5,9 +5,9 @@ import classnames from 'classnames';
 import SuitComponent from '../reuseable/Suit';
 import { Suit } from '../shared/models/game/cards';
 
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import makeStyles from '@mui/styles/makeStyles';
+import Typography from '@mui/material/Typography';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import { ASPECT_RATIO_BREAK_POINT } from '../style/Theme';
 import { ThemeSetter } from '../root/App';
 import { useColoredCardBackgroundStyles, useWhiteCardBackgroundStyles } from '../style/colors';

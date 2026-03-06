@@ -6,14 +6,14 @@ import FieldWithMinMaxButtons from '../reuseable/FieldWithMinMaxButtons';
 import TextFieldWrap from '../reuseable/TextFieldWrap';
 import IconPicker from '../reuseable/IconPicker';
 
-import { makeStyles } from '@material-ui/core/styles';
-import { Dialog, DialogContent, DialogActions, DialogTitle, Button } from '@material-ui/core';
+import makeStyles from '@mui/styles/makeStyles';
+import { Dialog, DialogContent, DialogActions, DialogTitle, Button } from '@mui/material';
 import { selectGameParameters, globalGameStateSelector } from '../store/selectors';
 import { AvatarKeys, getRandomAvatarKey } from '../shared/models/ui/assets';
 import Avatar from '../reuseable/Avatar';
 import { useStickyState } from '../utils';
 import { SELENIUM_TAGS } from '../shared/models/test/seleniumTags';
-import { grey } from '@material-ui/core/colors';
+import { grey } from '@mui/material/colors';
 
 const useStyles = makeStyles((theme) => ({
     nameRow: {

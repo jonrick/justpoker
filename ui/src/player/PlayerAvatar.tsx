@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
 import { WsServer } from '../api/ws';
 
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import { Theme } from '@mui/material/styles';
+
+import makeStyles from '@mui/styles/makeStyles';
+import createStyles from '@mui/styles/createStyles';
 
 import Avatar from '../reuseable/Avatar';
 import Animoji from '../reuseable/Animoji';

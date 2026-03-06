@@ -1,7 +1,9 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import { Theme } from '@mui/material/styles';
+import makeStyles from '@mui/styles/makeStyles';
+import createStyles from '@mui/styles/createStyles';
 import { ReactComponent as LogoA } from '../assets/logo/landingLogoA.svg';
 import { ReactComponent as LogoB } from '../assets/logo/landingLogoB.svg';
 import { genRandomInt } from '../shared/util/util';

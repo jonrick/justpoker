@@ -2,19 +2,23 @@ import React from 'react';
 import classnames from 'classnames';
 import TextFieldWrap from './TextFieldWrap';
 
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
+import { Theme } from '@mui/material/styles';
+import makeStyles from '@mui/styles/makeStyles';
+import createStyles from '@mui/styles/createStyles';
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
 import { useChipFormatter } from '../game/ChipFormatter';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         amtCont: {
             display: 'flex',
+            alignItems: 'stretch', // ensures both children take same height
         },
         field: {
             borderTopRightRadius: 0,
             borderBottomRightRadius: 0,
+            flexGrow: 1, // field takes remaining width
         },
         minMaxButtonCont: {
             display: 'flex',
@@ -22,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         minMaxButton: {
             minWidth: 80,
-            height: '50%',
+            height: '100%',
             fontSize: 12.8,
             padding: '0 8px',
             borderTopLeftRadius: 0,
@@ -58,6 +62,7 @@ function FieldWithMinMaxButtons(props) {
                 type="number"
                 chipsField
                 {...rest}
+                InputLabelProps={{ shrink: true }}
                 InputProps={{
                     className: classes.field,
                 }}

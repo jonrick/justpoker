@@ -1,25 +1,31 @@
 import { UserPreferences } from '../shared/models/ui/userPreferences';
-import { PaletteType } from '@material-ui/core';
-import lightGreen from '@material-ui/core/colors/lightGreen';
-import green from '@material-ui/core/colors/green';
-import blueGrey from '@material-ui/core/colors/blueGrey';
-import grey from '@material-ui/core/colors/grey';
-import blue from '@material-ui/core/colors/blue';
-import teal from '@material-ui/core/colors/teal';
-import indigo from '@material-ui/core/colors/indigo';
-import red from '@material-ui/core/colors/red';
+import { PaletteMode } from '@mui/material';
+import { lightGreen } from '@mui/material/colors';
+import { green } from '@mui/material/colors';
+import { blueGrey } from '@mui/material/colors';
+import { grey } from '@mui/material/colors';
+import { blue } from '@mui/material/colors';
+import { teal } from '@mui/material/colors';
+import { indigo } from '@mui/material/colors';
+import { red } from '@mui/material/colors';
 import { Background } from './colors';
 import cloneDeep from 'lodash/cloneDeep';
 
-import '@material-ui/core/styles';
+import '@mui/styles';
 
-declare module '@material-ui/core/styles/createTheme' {
+import { Theme } from '@mui/material/styles';
+
+declare module '@mui/material/styles' {
     interface Theme {
         custom?: any;
     }
     interface ThemeOptions {
         custom?: any;
     }
+}
+
+declare module '@mui/styles/defaultTheme' {
+  interface DefaultTheme extends Theme {}
 }
 
 export const DEFAULT_PREFERENCES: UserPreferences = {
@@ -130,84 +136,102 @@ export const CUSTOM_THEME = {
         fontFamily: 'Futura, Avenir, AkzidenzGrotesk, Questrial, Helvetica, sans-serif',
     },
     palette: {
-        type: 'dark' as PaletteType,
+        mode: 'dark' as PaletteMode,
         ...CUSTOM_PALETTE,
     },
-    overrides: {
+    components: {
         MuiPaper: {
-            root: {
-                backgroundColor: grey[900],
+            styleOverrides: {
+                root: {
+                    backgroundColor: grey[900],
+                },
             },
         },
         MuiTypography: {
-            root: {
-                color: 'inherit',
-                fontSize: '1vmin',
+            styleOverrides: {
+                root: {
+                    color: 'inherit',
+                    fontSize: '1vmin',
+                },
             },
         },
         MuiOutlinedInput: {
-            root: {
-                '&:hover:not($disabled):not($focused):not($error) $notchedOutline': {
-                    borderColor: teal['A200'],
+            styleOverrides: {
+                root: {
+                    '&:hover:not($disabled):not($focused):not($error) $notchedOutline': {
+                        borderColor: teal['A200'],
+                    },
                 },
-            },
-            input: {
-                padding: '1vmin',
-                fontSize: '1.3vmin',
-            },
-            multiline: {
-                padding: '1vmin',
-                fontSize: '1.4vmin',
+                input: {
+                    padding: '1vmin',
+                    fontSize: '1.3vmin',
+                },
+                multiline: {
+                    padding: '1vmin',
+                    fontSize: '1.4vmin',
+                },
             },
         },
         MuiButton: {
-            root: {
-                '&:hover': {
-                    '&:after': {
-                        content: "''",
-                        backgroundColor: 'rgba(255,255,255,0.15)',
-                        position: 'absolute',
-                        height: '100%',
-                        width: '100%',
+            styleOverrides: {
+                root: {
+                    '&:hover': {
+                        '&:after': {
+                            content: "''",
+                            backgroundColor: 'rgba(255,255,255,0.15)',
+                            position: 'absolute',
+                            height: '100%',
+                            width: '100%',
+                        },
                     },
+                    minWidth: '24px',
                 },
-                minWidth: '24px',
-            },
-            outlined: {
-                padding: '0.6vmin 0.8vmin',
+                outlined: {
+                    padding: '0.6vmin 0.8vmin',
+                },
             },
         },
         MuiIconButton: {
-            root: {
-                padding: '1vmin',
+            styleOverrides: {
+                root: {
+                    padding: '1vmin',
+                },
             },
         },
         MuiSvgIcon: {
-            root: {
-                width: '2.3vmin',
-                height: '2.3vmin',
+            styleOverrides: {
+                root: {
+                    width: '2.3vmin',
+                    height: '2.3vmin',
+                },
             },
         },
         MuiCheckbox: {
-            root: {
-                padding: '0.8vmin',
+            styleOverrides: {
+                root: {
+                    padding: '0.8vmin',
+                },
             },
         },
         MuiFormHelperText: {
-            root: {
-                position: ' absolute',
-                top: '10%',
-                right: 0,
+            styleOverrides: {
+                root: {
+                    position: ' absolute',
+                    top: '10%',
+                    right: 0,
+                },
             },
         },
     },
 };
 
 export const NOT_RELATIVE_THEME: any = cloneDeep(CUSTOM_THEME);
-NOT_RELATIVE_THEME.overrides = {
+NOT_RELATIVE_THEME.components = {
     MuiPaper: {
-        root: {
-            backgroundColor: grey[900],
+        styleOverrides: {
+            root: {
+                backgroundColor: grey[900],
+            },
         },
     },
 };

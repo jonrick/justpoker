@@ -1,31 +1,32 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import { makeStyles, createStyles } from '@mui/styles';
+import { Theme } from '@mui/material/styles';
 
 import classnames from 'classnames';
 
-import Typography from '@material-ui/core/Typography';
+import Typography from '@mui/material/Typography';
 
 import { UiHandLogEntry, UiCard } from '../shared/models/ui/uiState';
 import { getPlayerNameColor } from '../style/colors';
 import { generateStringFromRank, ScrollFixer } from '../utils';
-import { IconButton, Divider } from '@material-ui/core';
-import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
-import SkipNextIcon from '@material-ui/icons/SkipNext';
-import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
-import GetAppIcon from '@material-ui/icons/GetApp';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { IconButton, Divider } from '@mui/material';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import SkipNextIcon from '@mui/icons-material/SkipNext';
+import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
+import GetAppIcon from '@mui/icons-material/GetApp';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 import { BettingRoundLog, BetActionRecord, PotSummary, ShowdownHand, PotWinner } from '../shared/models/state/handLog';
 import { AbbreviatedPlayerPositionString } from '../shared/models/player/playerPosition';
 import Suit from '../reuseable/Suit';
 
-import blueGrey from '@material-ui/core/colors/blueGrey';
+import { blueGrey } from '@mui/material/colors';
 import { BettingRoundActionType } from '../shared/models/game/betting';
 import { PlayerUUID } from '../shared/models/system/uuid';
 import { WsServer } from '../api/ws';
 import { cardsAreEqual, Card } from '../shared/models/game/cards';
-import { grey } from '@material-ui/core/colors';
+import { grey } from '@mui/material/colors';
 import { ASPECT_RATIO_BREAK_POINT } from '../style/Theme';
 import { computeHandLogGETurl } from '../api/http';
 import { useParams } from 'react-router';

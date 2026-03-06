@@ -1,7 +1,9 @@
 import React from 'react';
 import classnames from 'classnames';
 import { Suit } from '../shared/models/game/cards';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import { Theme } from '@mui/material/styles';
+import makeStyles from '@mui/styles/makeStyles';
+import createStyles from '@mui/styles/createStyles';
 import Color from 'color';
 
 const useLightenedStyles = makeStyles((theme: Theme) =>

@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import Chip from './Chip';
 import classnames from 'classnames';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@mui/styles/makeStyles';
 import { MAX_VALUES } from '../shared/util/consts';
 
 const useStyles = makeStyles((theme) => ({

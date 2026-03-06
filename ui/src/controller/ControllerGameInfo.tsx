@@ -3,9 +3,11 @@ import { useSelector } from 'react-redux';
 import { controllerSelector, heroHandLabelSelector, globalGameStateSelector } from '../store/selectors';
 
 import classnames from 'classnames';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import Tooltip from '@material-ui/core/Tooltip';
-import Typography from '@material-ui/core/Typography';
+import { Theme } from '@mui/material/styles';
+import makeStyles from '@mui/styles/makeStyles';
+import createStyles from '@mui/styles/createStyles';
+import Tooltip from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
 
 const fontSize = '1.8vmin';
 

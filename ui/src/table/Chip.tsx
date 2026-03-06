@@ -1,19 +1,19 @@
 import React from 'react';
 import { MAX_VALUES } from '../shared/util/consts';
 
-import purple from '@material-ui/core/colors/purple';
-import pink from '@material-ui/core/colors/pink';
-import grey from '@material-ui/core/colors/grey';
-import green from '@material-ui/core/colors/green';
-import lightGreen from '@material-ui/core/colors/lightGreen';
-import cyan from '@material-ui/core/colors/cyan';
-import lime from '@material-ui/core/colors/lime';
-import yellow from '@material-ui/core/colors/yellow';
-import deepOrange from '@material-ui/core/colors/deepOrange';
-import red from '@material-ui/core/colors/red';
-import deepPurple from '@material-ui/core/colors/deepPurple';
+import { purple } from '@mui/material/colors';
+import { pink } from '@mui/material/colors';
+import { grey } from '@mui/material/colors';
+import { green } from '@mui/material/colors';
+import { lightGreen } from '@mui/material/colors';
+import { cyan } from '@mui/material/colors';
+import { lime } from '@mui/material/colors';
+import { yellow } from '@mui/material/colors';
+import { deepOrange } from '@mui/material/colors';
+import { red } from '@mui/material/colors';
+import { deepPurple } from '@mui/material/colors';
 
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles((theme) => ({
     svgCircle: {

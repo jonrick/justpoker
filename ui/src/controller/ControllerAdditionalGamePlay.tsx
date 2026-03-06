@@ -4,10 +4,12 @@ import { useSelector } from 'react-redux';
 import { controllerSelector, selectGameParameters, globalGameStateSelector } from '../store/selectors';
 
 import classnames from 'classnames';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Button from '@material-ui/core/Button';
+import { Theme } from '@mui/material/styles';
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Button from '@mui/material/Button';
 
 import BuyChipsDialog from '../game/BuyChipsDialog';
 import { WsServer } from '../api/ws';

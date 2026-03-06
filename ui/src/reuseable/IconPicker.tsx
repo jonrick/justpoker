@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import classnames from 'classnames';
 
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
-import { Paper, Grow, Popper } from '@material-ui/core';
-import PersonIcon from '@material-ui/icons/Person';
+import { Theme } from '@mui/material/styles';
+import makeStyles from '@mui/styles/makeStyles';
+import createStyles from '@mui/styles/createStyles';
+import IconButton from '@mui/material/IconButton';
+import { Paper, Grow, Popper } from '@mui/material';
+import PersonIcon from '@mui/icons-material/Person';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -49,7 +51,7 @@ function IconPicker(props) {
                 onClick={hoverOpen ? undefined : handleOpen}
                 onMouseEnter={hoverOpen ? handleOpen : undefined}
                 style={{ width: size, height: size }}
-            >
+                size="large">
                 {initIcon ? initIcon : <PersonIcon />}
             </IconButton>
             {open || showMenu ? (
@@ -76,7 +78,12 @@ function Options(props) {
     const { options, handleClickButton, style, className } = props;
 
     return options.map((option, i) => (
-        <IconButton key={i} className={className} onClick={() => handleClickButton(option)} style={style}>
+        <IconButton
+            key={i}
+            className={className}
+            onClick={() => handleClickButton(option)}
+            style={style}
+            size="large">
             {option.icon}
         </IconButton>
     ));

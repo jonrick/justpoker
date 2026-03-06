@@ -1,7 +1,7 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@mui/styles/makeStyles';
 import MakeGame from './MakeGame';
-import { indigo } from '@material-ui/core/colors';
+import { indigo } from '@mui/material/colors';
 
 const useStyles = makeStyles((theme) => ({
     root: {

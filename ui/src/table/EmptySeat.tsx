@@ -1,9 +1,9 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
+import makeStyles from '@mui/styles/makeStyles';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
 import { WsServer } from '../api/ws';
 
 const size = 5;
@@ -68,7 +68,7 @@ function EmptySeat(props) {
                 className={classnames(classes.button)}
                 onClick={handleRotationButtonClick}
                 style={semicircle ? {} : { height: `${size * 2}vmin` }}
-            >
+                size="large">
                 <Typography className={classnames(classes.text, semicircle ? classes.topButtonText : null)}>
                     Rotate Here
                 </Typography>
@@ -78,7 +78,10 @@ function EmptySeat(props) {
 
     function renderSeatChangeButton() {
         return (
-            <IconButton className={classnames(classes.button)} onClick={handleSeatChangeClick}>
+            <IconButton
+                className={classnames(classes.button)}
+                onClick={handleSeatChangeClick}
+                size="large">
                 <Typography className={classnames(classes.text, classes.bottomButtonText)}>Sit Here</Typography>
             </IconButton>
         );

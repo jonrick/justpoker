@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import { Typography, ButtonBase } from '@material-ui/core';
+import { Theme } from '@mui/material/styles';
+import makeStyles from '@mui/styles/makeStyles';
+import createStyles from '@mui/styles/createStyles';
+import { Typography, ButtonBase } from '@mui/material';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({

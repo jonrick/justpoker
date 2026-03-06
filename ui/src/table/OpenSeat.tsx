@@ -4,10 +4,10 @@ import { heroPlayerUUIDSelector, globalGameStateSelector } from '../store/select
 import { useSelector } from 'react-redux';
 import { WsServer } from '../api/ws';
 
-import IconButton from '@material-ui/core/IconButton';
-import { makeStyles } from '@material-ui/core/styles';
-import grey from '@material-ui/core/colors/grey';
-import Typography from '@material-ui/core/Typography';
+import IconButton from '@mui/material/IconButton';
+import { makeStyles } from '@mui/styles';
+import { grey } from '@mui/material/colors';
+import Typography from '@mui/material/Typography';
 import BuyChipsDialog from '../game/BuyChipsDialog';
 
 const useStyles = makeStyles((theme) => ({

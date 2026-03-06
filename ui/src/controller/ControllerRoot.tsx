@@ -1,8 +1,9 @@
 import React from 'react';
 
 import classnames from 'classnames';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import grey from '@material-ui/core/colors/grey';
+import { makeStyles, createStyles } from '@mui/styles';
+import { Theme } from '@mui/material/styles';
+import { grey } from '@mui/material/colors';
 
 import { SELENIUM_TAGS } from '../shared/models/test/seleniumTags';
 import ControllerSpectator from './ControllerSpectator';

@@ -1,11 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import { Theme } from '@mui/material/styles';
+
+import makeStyles from '@mui/styles/makeStyles';
+import createStyles from '@mui/styles/createStyles';
 
 import classnames from 'classnames';
 
 import TextFieldWrap from '../reuseable/TextFieldWrap';
 
-import Typography from '@material-ui/core/Typography';
+import Typography from '@mui/material/Typography';
 
 import EmojiPicker from '../reuseable/EmojiPicker';
 

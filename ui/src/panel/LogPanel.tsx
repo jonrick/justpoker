@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import { Theme } from '@mui/material/styles';
+
+import makeStyles from '@mui/styles/makeStyles';
+import createStyles from '@mui/styles/createStyles';
 
 import classnames from 'classnames';
-import Button from '@material-ui/core/Button';
+import Button from '@mui/material/Button';
 
 import { useStickyState } from '../utils';
-import { ButtonGroup } from '@material-ui/core';
+import { ButtonGroup } from '@mui/material';
 
 import ChatLog from './ChatLog';
 import HandLog from './HandLog';

@@ -3,7 +3,10 @@ import classnames from 'classnames';
 import { useSelector } from 'react-redux';
 import { heroPlayerTimerSelector, heroPlayerToAct } from '../store/selectors';
 
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import { Theme } from '@mui/material/styles';
+
+import makeStyles from '@mui/styles/makeStyles';
+import createStyles from '@mui/styles/createStyles';
 
 const UPDATE_INTERVAL_SECS = 0.4;
 

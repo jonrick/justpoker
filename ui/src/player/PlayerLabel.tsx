@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
 import classnames from 'classnames';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import { Theme } from '@mui/material/styles';
+
+import makeStyles from '@mui/styles/makeStyles';
+import createStyles from '@mui/styles/createStyles';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({

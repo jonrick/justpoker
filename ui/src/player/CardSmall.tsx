@@ -6,15 +6,15 @@ import { selectCanShowHideCards } from '../store/selectors';
 import { generateStringFromRank } from '../utils';
 import classnames from 'classnames';
 
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+import makeStyles from '@mui/styles/makeStyles';
+import Typography from '@mui/material/Typography';
 import SuitComponent from '../reuseable/Suit';
 import { Suit, Card } from '../shared/models/game/cards';
-import { grey } from '@material-ui/core/colors';
+import { grey } from '@mui/material/colors';
 import { ThemeSetter } from '../root/App';
 import { useColoredCardBackgroundStyles, useWhiteCardBackgroundStyles } from '../style/colors';
 import { WsServer } from '../api/ws';
-import { Button } from '@material-ui/core';
+import { Button } from '@mui/material';
 
 import { ReactComponent as Koi } from '../assets/logo/koi.svg';
 

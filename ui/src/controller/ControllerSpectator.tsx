@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { globalGameStateSelector } from '../store/selectors';
 
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+import { Theme } from '@mui/material/styles';
+import makeStyles from '@mui/styles/makeStyles';
+import createStyles from '@mui/styles/createStyles';
+import Button from '@mui/material/Button';
 
 import JoinGameDialog from '../game/JoinGameDialog';
 import { SELENIUM_TAGS } from '../shared/models/test/seleniumTags';

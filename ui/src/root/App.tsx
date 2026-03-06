@@ -3,14 +3,22 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ThemePreferences, UserPreferences } from '../shared/models/ui/userPreferences';
 import cloneDeep from 'lodash/cloneDeep';
 import { CUSTOM_THEME, DEFAULT_PREFERENCES } from '../style/Theme';
-import { ThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from '@mui/styles';
+import { ThemeProvider as MuiThemeProvider, Theme, StyledEngineProvider } from '@mui/material/styles';
 import GameContainer from '../game/GameContainer';
-import { createTheme } from '@material-ui/core/styles';
+import { createTheme } from '@mui/material/styles';
 
 import Home from './Home';
 import Ledger from '../ledger/Ledger';
 import ErrorBoundary from './ErrorBoundry';
 import Color from 'color';
+
+
+declare module '@mui/styles/defaultTheme' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  interface DefaultTheme extends Theme {}
+}
+
 
 const USER_PREFS_LOCAL_STORAGE_KEY = 'jp-user-prefs';
 
@@ -58,19 +66,25 @@ function App() {
         return null;
     }
 
+    const v5Theme = createTheme(theme);
+
     return (
         <ErrorBoundary>
             <ThemeSetter.Provider value={{ curPrefs: pref, themeSetter: setNewTheme }}>
-                <ThemeProvider theme={createTheme(theme)}>
-                    <Router>
-                        <Switch>
-                            <Route exact path="/table/test" render={(props) => <GameContainer useTestGame />} />
-                            <Route path="/table/:gameInstanceUUID" component={GameContainer} />
-                            <Route path="/ledger/:gameInstanceUUID" component={Ledger} />
-                            <Route path="/" component={Home} />
-                        </Switch>
-                    </Router>
-                </ThemeProvider>
+                <StyledEngineProvider injectFirst>
+                    <ThemeProvider theme={v5Theme}>
+                        <MuiThemeProvider theme={v5Theme}>
+                            <Router>
+                                <Switch>
+                                    <Route exact path="/table/test" render={(props) => <GameContainer useTestGame />} />
+                                    <Route path="/table/:gameInstanceUUID" component={GameContainer} />
+                                    <Route path="/ledger/:gameInstanceUUID" component={Ledger} />
+                                    <Route path="/" component={Home} />
+                                </Switch>
+                            </Router>
+                        </MuiThemeProvider>
+                    </ThemeProvider>
+                </StyledEngineProvider>
             </ThemeSetter.Provider>
         </ErrorBoundary>
     );

@@ -1,15 +1,15 @@
 import React, { useEffect, useRef } from 'react';
 import CountUp from 'react-countup';
 
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import AdminIcon from '@material-ui/icons/Stars';
+import makeStyles from '@mui/styles/makeStyles';
+import Typography from '@mui/material/Typography';
+import AdminIcon from '@mui/icons-material/Stars';
 
 import classnames from 'classnames';
 import TablePositionIndicator from '../table/TablePositionIndicator';
 import PlayerAvatar from './PlayerAvatar';
 import Animoji from '../reuseable/Animoji';
-import { Tooltip } from '@material-ui/core';
+import { Tooltip } from '@mui/material';
 import { useChipFormatter } from '../game/ChipFormatter';
 import { useSelector } from 'react-redux';
 import { selectUseCents } from '../store/selectors';

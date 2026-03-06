@@ -2,16 +2,16 @@ import React, { useState, useEffect } from 'react';
 import get from 'lodash/get';
 import { getLedger } from '../api/http';
 
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@mui/styles/makeStyles';
 import { UILedger, UILedgerRow } from '../shared/models/state/ledger';
 import { ErrorDisplay } from '../shared/models/ui/uiState';
 import { getEpochTimeMs } from '../shared/util/util';
 import ErrorMessage from '../root/ErrorMessage';
-import MaterialTable from 'material-table';
+import MaterialTable from '@material-table/core';
 import { useParams } from 'react-router';
 import { useChipFormatter } from '../game/ChipFormatter';
-import { IconButton, Tooltip } from '@material-ui/core';
-import RefreshIcon from '@material-ui/icons/Refresh';
+import { IconButton, Tooltip } from '@mui/material';
+import RefreshIcon from '@mui/icons-material/Refresh';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -128,7 +128,7 @@ function LedgerTable(props) {
     return (
         <div className={classes.tableCont}>
             <Tooltip title="Refresh">
-                <IconButton onClick={props.fetchLedger} className={classes.refresh}>
+                <IconButton onClick={props.fetchLedger} className={classes.refresh} size="large">
                     <RefreshIcon className={classes.refreshIcon} />
                 </IconButton>
             </Tooltip>
@@ -136,7 +136,7 @@ function LedgerTable(props) {
                 title={`Ledger for ${props.gameInstanceUUID} (${gameDate})`}
                 columns={columns}
                 data={transformed}
-                options={{
+                options={({
                     sorting: true,
                     exportButton: true,
                     exportFileName: `JustPokerLedger~${gameDate}~${props.gameInstanceUUID}`,
@@ -150,7 +150,7 @@ function LedgerTable(props) {
                         fontFamily: 'Futura',
                         fontSize: '14px',
                     },
-                }}
+                } as any)}
             />
         </div>
     );

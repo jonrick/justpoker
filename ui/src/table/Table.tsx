@@ -12,9 +12,9 @@ import { tableSelector, playersSelector, globalGameStateSelector } from '../stor
 import { ClientActionType, ClientWsMessageRequest } from '../shared/models/api/api';
 import { WsServer } from '../api/ws';
 
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import { Typography, Zoom } from '@material-ui/core';
+import makeStyles from '@mui/styles/makeStyles';
+import Button from '@mui/material/Button';
+import { Typography, Zoom } from '@mui/material';
 import { SELENIUM_TAGS } from '../shared/models/test/seleniumTags';
 
 const W_UNIT = '%';

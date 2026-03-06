@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import get from 'lodash/get';
-import Button from '@material-ui/core/Button';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import Button from '@mui/material/Button';
+import { Theme } from '@mui/material/styles';
+import makeStyles from '@mui/styles/makeStyles';
+import createStyles from '@mui/styles/createStyles';
 import classnames from 'classnames';
 
 const useStyles = makeStyles((theme: Theme) => {

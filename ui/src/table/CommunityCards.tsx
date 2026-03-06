@@ -1,7 +1,7 @@
 import React from 'react';
 import CardLarge from './CardLarge';
 import classnames from 'classnames';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@mui/styles/makeStyles';
 
 const useStyles = makeStyles((theme) => ({
     communityCardsCont: {

@@ -1246,7 +1246,8 @@ export class GameStateManager {
     }
 
     getHoleCards(playerUUID: PlayerUUID): ReadonlyArray<Card> {
-        return this.getPlayer(playerUUID).holeCards;
+        const player = this.getPlayer(playerUUID);
+        return player ? player.holeCards : [];
     }
 
     computePlayerBestHand(playerUUID: PlayerUUID): Hand {

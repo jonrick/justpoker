@@ -8,21 +8,23 @@ import { WsServer } from '../api/ws';
 import SettingsDialog from './SettingsDialog';
 import { ClientActionType, UiActionType, ClientWsMessageRequest } from '../shared/models/api/api';
 
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
-import Tooltip from '@material-ui/core/Tooltip';
-import Paper from '@material-ui/core/Paper';
-import GameSettingsIcon from '@material-ui/icons/SettingsApplications';
-import QuitIcon from '@material-ui/icons/Clear';
-import StartIcon from '@material-ui/icons/PlayArrow';
-import StopIcon from '@material-ui/icons/Stop';
-import UserSettingsIcon from '@material-ui/icons/Person';
-import VolumeOnIcon from '@material-ui/icons/VolumeUp';
-import VolumeOffIcon from '@material-ui/icons/VolumeMute';
-import MoreIcon from '@material-ui/icons/MoreHoriz';
-import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
-import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
-import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
+import { Theme } from '@mui/material/styles';
+import makeStyles from '@mui/styles/makeStyles';
+import createStyles from '@mui/styles/createStyles';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import Paper from '@mui/material/Paper';
+import GameSettingsIcon from '@mui/icons-material/SettingsApplications';
+import QuitIcon from '@mui/icons-material/Clear';
+import StartIcon from '@mui/icons-material/PlayArrow';
+import StopIcon from '@mui/icons-material/Stop';
+import UserSettingsIcon from '@mui/icons-material/Person';
+import VolumeOnIcon from '@mui/icons-material/VolumeUp';
+import VolumeOffIcon from '@mui/icons-material/VolumeMute';
+import MoreIcon from '@mui/icons-material/MoreHoriz';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 
 import GameParamatersDialog from './GameParamatersDialog';
 import ConfirmationDialog from '../reuseable/ConfirmationDialog';
@@ -198,7 +200,10 @@ function GameMenu(props) {
     function generateButtonsFromArray(buttons) {
         return buttons.map((button) => (
             <Tooltip key={button.label} title={button.label} placement="right">
-                <IconButton className={classes.iconButton} onClick={() => handleClickButton(button.action)}>
+                <IconButton
+                    className={classes.iconButton}
+                    onClick={() => handleClickButton(button.action)}
+                    size="large">
                     {getIcon(button.action, classes.icon)}
                 </IconButton>
             </Tooltip>
@@ -208,7 +213,7 @@ function GameMenu(props) {
     function generateMoreIcon() {
         return (
             <Tooltip key={'more'} title={'More'} placement="right">
-                <IconButton className={classes.iconButton}>
+                <IconButton className={classes.iconButton} size="large">
                     <MoreIcon className={classes.icon} />
                 </IconButton>
             </Tooltip>

@@ -1,16 +1,16 @@
-import green from '@material-ui/core/colors/green';
-import grey from '@material-ui/core/colors/grey';
-import blue from '@material-ui/core/colors/blue';
-import teal from '@material-ui/core/colors/teal';
-import yellow from '@material-ui/core/colors/yellow';
-import indigo from '@material-ui/core/colors/indigo';
-import orange from '@material-ui/core/colors/orange';
-import pink from '@material-ui/core/colors/pink';
-import red from '@material-ui/core/colors/red';
-import deepPurple from '@material-ui/core/colors/deepPurple';
-import { brown, lime } from '@material-ui/core/colors';
+import { green } from '@mui/material/colors';
+import { grey } from '@mui/material/colors';
+import { blue } from '@mui/material/colors';
+import { teal } from '@mui/material/colors';
+import { yellow } from '@mui/material/colors';
+import { indigo } from '@mui/material/colors';
+import { orange } from '@mui/material/colors';
+import { pink } from '@mui/material/colors';
+import { red } from '@mui/material/colors';
+import { deepPurple } from '@mui/material/colors';
+import { brown, lime } from '@mui/material/colors';
 import { Suit } from '../shared/models/game/cards';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 
 export const Background = {
     blue: blue[600],

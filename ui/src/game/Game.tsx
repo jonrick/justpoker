@@ -13,7 +13,7 @@ import GameDisconnetionMessage from './GameDisconnectionMessage';
 import ReactionPicker from './ReactionPicker';
 import GameKeepAliveListener from './GameKeepAliveListener';
 
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@mui/styles/makeStyles';
 import { useStickyState } from '../utils';
 import GameToActIndicator from './GameToActIndicator';
 

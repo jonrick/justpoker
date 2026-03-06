@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+import { Theme } from '@mui/material/styles';
+import makeStyles from '@mui/styles/makeStyles';
+import createStyles from '@mui/styles/createStyles';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import AddChipDialog from '../game/SetChipDialog';
 import { WsServer } from '../api/ws';
 import { useSelector } from 'react-redux';
 import { isHeroAdminSelector, heroPlayerUUIDSelector } from '../store/selectors';
 import { AvatarKeys } from '../shared/models/ui/assets';
-import { IconButton } from '@material-ui/core';
+import { IconButton } from '@mui/material';
 import Avatar from '../reuseable/Avatar';
 import ConfirmationDialog from '../reuseable/ConfirmationDialog';
 import { AVATAR_LOCAL_STORAGE_KEY } from '../game/JoinGameDialog';
@@ -78,7 +80,11 @@ function PlayerMenu(props) {
         return (
             <>
                 {Object.keys(AvatarKeys).map((key, index) => (
-                    <IconButton key={key} onClick={handleSelectNewAvatar(key)} className={classes.avatarButton}>
+                    <IconButton
+                        key={key}
+                        onClick={handleSelectNewAvatar(key)}
+                        className={classes.avatarButton}
+                        size="large">
                         <Avatar avatarKey={key} className={classes.avatarIcon} />
                     </IconButton>
                 ))}

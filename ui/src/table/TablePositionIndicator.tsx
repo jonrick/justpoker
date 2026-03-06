@@ -1,11 +1,12 @@
 import React from 'react';
 
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import { Typography, Tooltip } from '@material-ui/core';
+import { makeStyles, createStyles } from '@mui/styles';
+import { Theme } from '@mui/material/styles';
+import { Typography, Tooltip } from '@mui/material';
 import { PositionIndicator } from '../shared/models/ui/uiState';
-import yellow from '@material-ui/core/colors/yellow';
-import orange from '@material-ui/core/colors/orange';
-import grey from '@material-ui/core/colors/grey';
+import { yellow } from '@mui/material/colors';
+import { orange } from '@mui/material/colors';
+import { grey } from '@mui/material/colors';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
