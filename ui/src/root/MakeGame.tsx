@@ -19,7 +19,7 @@ import { AnimojiKeys } from '../shared/models/ui/assets';
 import { NOT_RELATIVE_THEME } from '../style/Theme';
 import { ThemeProvider, Theme, StyledEngineProvider } from '@mui/material/styles';
 import { createTheme } from '@mui/material/styles';
-import { withRouter } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 
 
 declare module '@mui/styles/defaultTheme' {
@@ -79,9 +79,9 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function MakeGame(props) {
+function MakeGame() {
     const classes = useStyles();
-    const { history } = props;
+    const navigate = useNavigate();
 
     const [areOverCapacity, SET_areOverCapacity] = useState();
     const [canCreate, SET_canCreate] = useState(false);
@@ -140,7 +140,7 @@ function MakeGame(props) {
 
     const createSuccess = (response) => {
         const gameInstanceUUID = get(response, 'data.gameInstanceUUID');
-        history.push(`/table/${gameInstanceUUID}`);
+        navigate(`/table/${gameInstanceUUID}`);
     };
 
     const createFailure = (err) => {
@@ -270,4 +270,4 @@ function MakeGame(props) {
     );
 }
 
-export default withRouter(MakeGame);
+export default MakeGame;

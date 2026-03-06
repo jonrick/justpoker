@@ -1,6 +1,6 @@
 import React from 'react';
 import TextField from '@mui/material/TextField';
-import NumberFormat from 'react-number-format';
+import { NumericFormat } from 'react-number-format';
 import { useSelector } from 'react-redux';
 import { selectUseCents } from '../store/selectors';
 
@@ -87,12 +87,12 @@ function TextFieldWrap(props) {
 }
 
 const DivideBy100Formatter = React.forwardRef(function DivideBy100Formatter(props: any, ref) {
-    const { inputRef, onChange, max, maxStrict, ...other } = props;
+    const { onChange, max, maxStrict, ...other } = props;
 
     return (
-        <NumberFormat
+        <NumericFormat
             {...other}
-            getInputRef={ref || inputRef}
+            getInputRef={ref}
             onValueChange={(values) => {
                 onChange({
                     target: {
@@ -100,7 +100,7 @@ const DivideBy100Formatter = React.forwardRef(function DivideBy100Formatter(prop
                     },
                 });
             }}
-            isNumericString
+            valueIsNumericString
             format={(val) => {
                 let num = parseInt(val);
                 if (maxStrict && !Number.isNaN(max)) num = Math.min(num, max);

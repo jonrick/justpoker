@@ -24,5 +24,20 @@ export default defineConfig({
     },
     build: {
         outDir: 'build',
+        rollupOptions: {
+            output: {
+                manualChunks: {
+                    'vendor-react': ['react', 'react-dom', 'react-router-dom', 'react-redux', 'redux'],
+                    'vendor-mui': [
+                        '@mui/material',
+                        '@mui/icons-material',
+                        '@mui/styles',
+                        '@emotion/react',
+                        '@emotion/styled',
+                    ],
+                    'vendor-utils': ['lodash', 'howler', 'axios', 'react-number-format'],
+                },
+            },
+        },
     },
 });

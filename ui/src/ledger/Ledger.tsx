@@ -8,7 +8,7 @@ import { ErrorDisplay } from '../shared/models/ui/uiState';
 import { getEpochTimeMs } from '../shared/util/util';
 import ErrorMessage from '../root/ErrorMessage';
 import MaterialTable from '@material-table/core';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 import { useChipFormatter } from '../game/ChipFormatter';
 import { IconButton, Tooltip } from '@mui/material';
 import RefreshIcon from '@mui/icons-material/Refresh';

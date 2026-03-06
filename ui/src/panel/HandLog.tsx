@@ -29,7 +29,7 @@ import { cardsAreEqual, Card } from '../shared/models/game/cards';
 import { grey } from '@mui/material/colors';
 import { ASPECT_RATIO_BREAK_POINT } from '../style/Theme';
 import { computeHandLogGETurl } from '../api/http';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 import { useChipFormatter } from '../game/ChipFormatter';
 
 const handLogTextContentSize = '1.5vmin';

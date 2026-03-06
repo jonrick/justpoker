@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemePreferences, UserPreferences } from '../shared/models/ui/userPreferences';
 import cloneDeep from 'lodash/cloneDeep';
 import { CUSTOM_THEME, DEFAULT_PREFERENCES } from '../style/Theme';
@@ -75,12 +75,12 @@ function App() {
                     <ThemeProvider theme={v5Theme}>
                         <MuiThemeProvider theme={v5Theme}>
                             <Router>
-                                <Switch>
-                                    <Route exact path="/table/test" render={(props) => <GameContainer useTestGame />} />
-                                    <Route path="/table/:gameInstanceUUID" component={GameContainer} />
-                                    <Route path="/ledger/:gameInstanceUUID" component={Ledger} />
-                                    <Route path="/" component={Home} />
-                                </Switch>
+                                <Routes>
+                                    <Route path="/table/test" element={<GameContainer useTestGame />} />
+                                    <Route path="/table/:gameInstanceUUID" element={<GameContainer />} />
+                                    <Route path="/ledger/:gameInstanceUUID" element={<Ledger />} />
+                                    <Route path="/" element={<Home />} />
+                                </Routes>
                             </Router>
                         </MuiThemeProvider>
                     </ThemeProvider>

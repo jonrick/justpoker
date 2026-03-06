@@ -8,7 +8,7 @@ import { Typography } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { ErrorDisplay } from '../shared/models/ui/uiState';
 import { GameInstanceUUID } from '../shared/models/system/uuid';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     root: {
