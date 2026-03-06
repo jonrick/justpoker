@@ -5,12 +5,12 @@ import { useSelector } from 'react-redux';
 import { WsServer } from '../api/ws';
 
 import IconButton from '@mui/material/IconButton';
-import { makeStyles } from '@mui/styles';
+import { makeStyles } from 'tss-react/mui';
 import { grey } from '@mui/material/colors';
 import Typography from '@mui/material/Typography';
 import BuyChipsDialog from '../game/BuyChipsDialog';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
     button: {
         width: '8vmin',
         height: '8vmin',
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function OpenSeat(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const { className, style, seatNumber } = props;
     const [dialogOpen, setDialogOpen] = useState(false);
     const heroPlayerUUID = useSelector(heroPlayerUUIDSelector);

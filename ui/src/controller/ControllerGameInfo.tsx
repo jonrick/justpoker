@@ -4,15 +4,13 @@ import { controllerSelector, heroHandLabelSelector, globalGameStateSelector } fr
 
 import classnames from 'classnames';
 import { Theme } from '@mui/material/styles';
-import makeStyles from '@mui/styles/makeStyles';
-import createStyles from '@mui/styles/createStyles';
+import { makeStyles } from 'tss-react/mui';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 
 const fontSize = '1.8vmin';
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useStyles = makeStyles()((theme: Theme) => ({
         handLabel: {
             fontSize: fontSize,
             color: theme.palette.primary.main,
@@ -35,7 +33,7 @@ const useStyles = makeStyles((theme: Theme) =>
 // contains information about the user's chips, hand and position in game
 // has no user interactable elements
 function ControllerGameInfo(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const { rootClassName } = props;
     const { playerPositionString } = useSelector(controllerSelector);
     const heroHandLabel = useSelector(heroHandLabelSelector);

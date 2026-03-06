@@ -3,15 +3,13 @@ import { useSelector } from 'react-redux';
 import { globalGameStateSelector } from '../store/selectors';
 
 import { Theme } from '@mui/material/styles';
-import makeStyles from '@mui/styles/makeStyles';
-import createStyles from '@mui/styles/createStyles';
+import { makeStyles } from 'tss-react/mui';
 import Button from '@mui/material/Button';
 
 import JoinGameDialog from '../game/JoinGameDialog';
 import { SELENIUM_TAGS } from '../shared/models/test/seleniumTags';
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useStyles = makeStyles()((theme: Theme) => ({
         joinGameButton: {
             height: '60%',
             width: '12vw',
@@ -23,7 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 // should be render when player is a spectator, gives option to join game
 function ControllerSpectator(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const { rootClassName } = props;
     const [dialogOpen, setDialogOpen] = useState(false);
 

@@ -5,7 +5,7 @@ import Hand from './Hand';
 import PlayerStack from './PlayerStack';
 import { useSelector } from 'react-redux';
 import { selectCanShowHideCards } from '../store/selectors';
-import { makeStyles } from '@mui/styles';
+import { makeStyles } from 'tss-react/mui';
 import Typography from '@mui/material/Typography';
 import { grey } from '@mui/material/colors';
 import MoreIcon from '@mui/icons-material/MoreHoriz';
@@ -16,7 +16,7 @@ import PlayerLabel from './PlayerLabel';
 import { IconButton, Button } from '@mui/material';
 import { WsServer } from '../api/ws';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
     root: {
         width: `${theme.custom.PLAYER_WIDTH}vmin`,
         height: `${theme.custom.PLAYER_HEIGHT}vmin`,
@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Player(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const { className, player, style, setHeroRotation, virtualPositon } = props;
     const { hand, playerTimer, folded, uuid, sittingOut, hero, lastAction, cannotHideCards } = player;
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);

@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import SuitComponent from '../reuseable/Suit';
 import { Suit } from '../shared/models/game/cards';
 
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { ASPECT_RATIO_BREAK_POINT } from '../style/Theme';
@@ -15,7 +15,7 @@ import { useColoredCardBackgroundStyles, useWhiteCardBackgroundStyles } from '..
 const CARD_HEIGHT = 11;
 const CARD_WIDTH = 8.6;
 const BORDER_SIZE = 0.22;
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
     root: {
         borderRadius: 6,
         display: 'inline-block',
@@ -78,9 +78,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function CardLarge(props) {
-    const classes = useStyles();
-    const coloredCardBackgroundClasses = useColoredCardBackgroundStyles();
-    const whiteCardBackgroundClasses = useWhiteCardBackgroundStyles();
+    const { classes } = useStyles();
+    const { classes: coloredCardBackgroundClasses } = useColoredCardBackgroundStyles();
+    const { classes: whiteCardBackgroundClasses } = useWhiteCardBackgroundStyles();
     const { suit, rank, partOfWinningHand, className, placeHolder } = props;
     const smallWidth = useMediaQuery(ASPECT_RATIO_BREAK_POINT);
     const { curPrefs } = useContext(ThemeSetter);

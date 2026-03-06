@@ -1,14 +1,14 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import { WsServer } from '../api/ws';
 
 const size = 5;
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
     emptySeatRoot: {
         width: `${size * 2}vmin`,
         height: `${size * 2}vmin`,
@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function EmptySeat(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const {
         className,
         style,

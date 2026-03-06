@@ -3,14 +3,12 @@ import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 
 import { Theme } from '@mui/material/styles';
-import makeStyles from '@mui/styles/makeStyles';
-import createStyles from '@mui/styles/createStyles';
+import { makeStyles } from 'tss-react/mui';
 import classnames from 'classnames';
 import PotAward from './PotAward';
 import { useChipFormatter } from '../game/ChipFormatter';
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useStyles = makeStyles()((theme: Theme) => ({
         root: {
             position: 'absolute',
             top: '0',
@@ -65,7 +63,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 function PotTable(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const { activePot, fullPot, inactivePots, awardPots } = props;
     const showInactivePots = inactivePots.length >= 1;
     const showActivePot = activePot !== 0;

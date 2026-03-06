@@ -13,11 +13,11 @@ import GameDisconnetionMessage from './GameDisconnectionMessage';
 import ReactionPicker from './ReactionPicker';
 import GameKeepAliveListener from './GameKeepAliveListener';
 
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import { useStickyState } from '../utils';
 import GameToActIndicator from './GameToActIndicator';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
     root: {
         height: '100%',
         width: '100%',
@@ -48,7 +48,7 @@ const MUTE_LOCAL_STORAGE_KEY = 'jp-last-used-mute';
 
 function Game(props) {
     const [mute, SET_mute] = useStickyState(false, MUTE_LOCAL_STORAGE_KEY);
-    const classes = useStyles();
+    const { classes } = useStyles();
     const { wsConnClosed } = props;
 
     return (

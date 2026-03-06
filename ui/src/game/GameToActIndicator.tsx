@@ -3,12 +3,10 @@ import classnames from 'classnames';
 import { useSelector } from 'react-redux';
 import { heroPlayerToAct } from '../store/selectors';
 import { Theme } from '@mui/material/styles';
-import makeStyles from '@mui/styles/makeStyles';
-import createStyles from '@mui/styles/createStyles';
+import { makeStyles } from 'tss-react/mui';
 import Color from 'color';
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useStyles = makeStyles()((theme: Theme) => ({
         root: {
             position: 'absolute',
             width: '100%',
@@ -38,7 +36,7 @@ function getColor(bg) {
 }
 
 function GameToActIndicator(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const toAct = useSelector(heroPlayerToAct);
     return <div className={classnames(classes.root, { [classes.rootToAct]: toAct })} />;
 }

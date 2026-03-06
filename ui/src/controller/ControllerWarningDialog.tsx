@@ -1,8 +1,7 @@
 import React from 'react';
 
 import { Theme } from '@mui/material/styles';
-import makeStyles from '@mui/styles/makeStyles';
-import createStyles from '@mui/styles/createStyles';
+import { makeStyles } from 'tss-react/mui';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -10,8 +9,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useStyles = makeStyles()((theme: Theme) => ({
         text: {
             marginBottom: 24,
         },
@@ -20,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 // warning dialog to use which appears when they are making unnecessary fold
 function ControllerWarningDialog(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const { open, handleClose, onConfirm } = props;
 
     function onPressEnter(event: any) {

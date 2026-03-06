@@ -9,8 +9,7 @@ import SettingsDialog from './SettingsDialog';
 import { ClientActionType, UiActionType, ClientWsMessageRequest } from '../shared/models/api/api';
 
 import { Theme } from '@mui/material/styles';
-import makeStyles from '@mui/styles/makeStyles';
-import createStyles from '@mui/styles/createStyles';
+import { makeStyles } from 'tss-react/mui';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Paper from '@mui/material/Paper';
@@ -33,8 +32,7 @@ import { GameParameters } from '../shared/models/game/game';
 import BuyChipsDialog from './BuyChipsDialog';
 import { MenuButton } from '../shared/models/ui/uiState';
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useStyles = makeStyles()((theme: Theme) => ({
         hoverArea: {
             zIndex: 5,
             position: 'absolute',
@@ -82,7 +80,7 @@ const ALWAYS_SHOW = [
 
 function GameMenu(props) {
     const { mute, SET_mute } = props;
-    const classes = useStyles();
+    const { classes } = useStyles();
     const [open, setOpen] = React.useState(false);
     const menuButtons = useSelector(selectMenuButtons);
     const gameParameters = useSelector(selectGameParameters);

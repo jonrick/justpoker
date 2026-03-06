@@ -5,8 +5,7 @@ import InputLabel from '@mui/material/InputLabel';
 import capitalize from 'lodash/capitalize';
 
 import { Theme } from '@mui/material/styles';
-import makeStyles from '@mui/styles/makeStyles';
-import createStyles from '@mui/styles/createStyles';
+import { makeStyles } from 'tss-react/mui';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -21,8 +20,7 @@ import { Select, MenuItem, Paper, ClickAwayListener, Checkbox } from '@mui/mater
 import { Background } from '../style/colors';
 import { ChromePicker } from 'react-color';
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useStyles = makeStyles()((theme: Theme) => ({
         content: {
             display: 'flex',
             flexDirection: 'row',
@@ -59,7 +57,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 function SettingsDialog(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const { open, handleClose } = props;
     const { curPrefs: curfPrefs, themeSetter } = useContext(ThemeSetter);
     const [background, SET_background] = useState(curfPrefs.backgroundColor);

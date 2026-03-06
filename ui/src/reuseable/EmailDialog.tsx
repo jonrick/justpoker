@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import Button from '@mui/material/Button';
 import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
@@ -14,7 +14,7 @@ import { sendMail } from '../api/http';
 import { EmailMessage } from '../shared/models/system/email';
 import { useClientIp } from '../utils';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles()({
     dialog: {
         width: '60vw',
         height: '60vh',
@@ -26,7 +26,7 @@ const useStyles = makeStyles({
 });
 
 function EmailDialog(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const { onClose, open } = props;
     const [msgType, SET_msgType] = useState('');
     const [body, SET_body] = useState('');

@@ -4,15 +4,13 @@ import { WsServer } from '../api/ws';
 
 import { Theme } from '@mui/material/styles';
 
-import makeStyles from '@mui/styles/makeStyles';
-import createStyles from '@mui/styles/createStyles';
+import { makeStyles } from 'tss-react/mui';
 
 import Avatar from '../reuseable/Avatar';
 import Animoji from '../reuseable/Animoji';
 import { AnimationState, AnimationType } from '../shared/models/state/animationState';
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useStyles = makeStyles()((theme: Theme) => ({
         root: {
             display: 'flex',
             justifyContent: 'center',
@@ -38,7 +36,7 @@ const useStyles = makeStyles((theme: Theme) =>
 const REACTION_TIME = 4000;
 
 function PlayerAvatar(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const { className, avatarKey, playerUUID } = props;
     const [reactionState, SET_reactionState] = useState({ show: false, reaction: '' });
     const [timer, timerSet] = useState(0);

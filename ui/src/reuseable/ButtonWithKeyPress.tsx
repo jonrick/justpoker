@@ -2,12 +2,10 @@ import React, { useState, useEffect } from 'react';
 import get from 'lodash/get';
 import Button from '@mui/material/Button';
 import { Theme } from '@mui/material/styles';
-import makeStyles from '@mui/styles/makeStyles';
-import createStyles from '@mui/styles/createStyles';
+import { makeStyles } from 'tss-react/mui';
 import classnames from 'classnames';
 
-const useStyles = makeStyles((theme: Theme) => {
-    return createStyles({
+const useStyles = makeStyles()((theme: Theme) => ({
         active: {
             ...(get(theme, 'overrides.MuiButton.root["&:hover"]', {}) as any),
         },
@@ -19,11 +17,10 @@ const useStyles = makeStyles((theme: Theme) => {
                 opacity: 0.3,
             },
         },
-    });
-});
+    }));
 
 function ButtonWithKeyPress(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const { className, keyPress, onClick, ...rest } = props;
 
     const [isKeyDown, setIsKeyDown] = useState(false);

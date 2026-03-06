@@ -1,9 +1,9 @@
 import React from 'react';
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import CardSmall from './CardSmall';
 import classnames from 'classnames';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
     root: {
         display: 'flex',
         justifyContent: 'center',
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Hand(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const { hand, hero, className, cannotHideCards, playerUUID } = props;
     const { cards } = hand;
 

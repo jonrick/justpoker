@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import TextFieldWrap from '../reuseable/TextFieldWrap';
 
 import { Theme } from '@mui/material/styles';
-import makeStyles from '@mui/styles/makeStyles';
-import createStyles from '@mui/styles/createStyles';
+import { makeStyles } from 'tss-react/mui';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -19,8 +18,7 @@ import { Typography } from '@mui/material';
 import { WsServer } from '../api/ws';
 import { useChipFormatter } from './ChipFormatter';
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useStyles = makeStyles()((theme: Theme) => ({
         root: {},
         radioGroup: {
             display: 'flex',
@@ -38,7 +36,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 function SetChipDialog(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const { open, handleClose, name, stack, uuid } = props;
     const [chipAmt, setChipAmt] = useState(0);
     const [mode, setMode] = React.useState('Set');

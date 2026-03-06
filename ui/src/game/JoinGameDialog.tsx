@@ -6,7 +6,7 @@ import FieldWithMinMaxButtons from '../reuseable/FieldWithMinMaxButtons';
 import TextFieldWrap from '../reuseable/TextFieldWrap';
 import IconPicker from '../reuseable/IconPicker';
 
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import { Dialog, DialogContent, DialogActions, DialogTitle, Button } from '@mui/material';
 import { selectGameParameters, globalGameStateSelector } from '../store/selectors';
 import { AvatarKeys, getRandomAvatarKey } from '../shared/models/ui/assets';
@@ -15,7 +15,7 @@ import { useStickyState } from '../utils';
 import { SELENIUM_TAGS } from '../shared/models/test/seleniumTags';
 import { grey } from '@mui/material/colors';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
     nameRow: {
         width: '100%',
         display: 'flex',
@@ -62,7 +62,7 @@ const NAME_LOCAL_STORAGE_KEY = 'jp-last-used-name';
 export const AVATAR_LOCAL_STORAGE_KEY = 'jp-last-used-avatar';
 
 function JoinGameDialog(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const { handleClose, open } = props;
     const [name, setName] = useStickyState('', NAME_LOCAL_STORAGE_KEY);
     const [avatarKey, SET_avatarKey] = useStickyState(getRandomAvatarKey(), AVATAR_LOCAL_STORAGE_KEY);

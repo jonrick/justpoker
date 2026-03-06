@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { makeStyles, createStyles } from '@mui/styles';
+import { makeStyles } from 'tss-react/mui';
 import { Theme } from '@mui/material/styles';
 import { Typography, Tooltip } from '@mui/material';
 import { PositionIndicator } from '../shared/models/ui/uiState';
@@ -8,8 +8,7 @@ import { yellow } from '@mui/material/colors';
 import { orange } from '@mui/material/colors';
 import { grey } from '@mui/material/colors';
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useStyles = makeStyles()((theme: Theme) => ({
         root: {
             position: 'absolute',
             top: 0,
@@ -33,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 function TablePositionIndicator(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const { positionIndicator } = props;
 
     switch (positionIndicator) {

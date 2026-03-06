@@ -2,14 +2,12 @@ import React, { useState } from 'react';
 import classnames from 'classnames';
 
 import { Theme } from '@mui/material/styles';
-import makeStyles from '@mui/styles/makeStyles';
-import createStyles from '@mui/styles/createStyles';
+import { makeStyles } from 'tss-react/mui';
 import IconButton from '@mui/material/IconButton';
 import { Paper, Grow, Popper } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useStyles = makeStyles()((theme: Theme) => ({
         root: {
             display: 'flex',
             flexWrap: 'wrap',
@@ -28,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 function IconPicker(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const { options, paperClass, placement, initIcon, onSelect, size, hoverOpen, buttonClass, open } = props;
 
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);

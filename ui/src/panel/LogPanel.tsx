@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Theme } from '@mui/material/styles';
 
-import makeStyles from '@mui/styles/makeStyles';
-import createStyles from '@mui/styles/createStyles';
+import { makeStyles } from 'tss-react/mui';
 
 import classnames from 'classnames';
 import Button from '@mui/material/Button';
@@ -13,8 +12,7 @@ import { ButtonGroup } from '@mui/material';
 import ChatLog from './ChatLog';
 import HandLog from './HandLog';
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useStyles = makeStyles()((theme: Theme) => ({
         root: {
             zIndex: 5,
             height: '100%',
@@ -55,7 +53,7 @@ const CHAT_HIDDEN_LOCAL_STORAGE_KEY = 'jp-hide-chat';
 const HANDLOG_HIDDEN_LOCAL_STORAGE_KEY = 'jp-hide-handlog';
 
 function LogPanel(props: LogPanelProps) {
-    const classes = useStyles();
+    const { classes } = useStyles();
 
     const { className } = props;
 

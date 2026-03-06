@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
 import Chip from './Chip';
 import classnames from 'classnames';
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import { MAX_VALUES } from '../shared/util/consts';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
     root: {
         display: 'flex',
         justifyContent: 'center',
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ChipStack(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const { amount, className } = props;
 
     function generateAStackOfChips(chipSize, numChips, index): JSX.Element {

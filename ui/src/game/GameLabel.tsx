@@ -4,8 +4,7 @@ import classnames from 'classnames';
 
 import { globalGameStateSelector, selectGameParameters } from '../store/selectors';
 import { Theme } from '@mui/material/styles';
-import makeStyles from '@mui/styles/makeStyles';
-import createStyles from '@mui/styles/createStyles';
+import { makeStyles } from 'tss-react/mui';
 import { Typography } from '@mui/material';
 import IconTooltip from '../reuseable/IconTooltip';
 import AdminIcon from '@mui/icons-material/AccountBox';
@@ -14,8 +13,7 @@ import { useChipFormatter } from './ChipFormatter';
 import { startCase } from 'lodash';
 import { stringArrayToSentence } from '../utils';
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useStyles = makeStyles()((theme: Theme) => ({
         root: {
             top: 10,
             right: 15,
@@ -46,7 +44,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 function GameLabel(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
 
     const {
         gameWillStopAfterHand,

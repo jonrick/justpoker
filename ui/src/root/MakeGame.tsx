@@ -4,7 +4,7 @@ import { createGame, getCapacity } from '../api/http';
 import { MIN_VALUES, MAX_VALUES } from '../shared/util/consts';
 
 
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import TextFieldWrap from '../reuseable/TextFieldWrap';
 
 import Button from '@mui/material/Button';
@@ -22,13 +22,7 @@ import { createTheme } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 
 
-declare module '@mui/styles/defaultTheme' {
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface DefaultTheme extends Theme {}
-}
-
-
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
     root: {
         display: 'flex',
         backgroundColor: 'rgba(0, 0, 0, 0.7)',
@@ -80,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function MakeGame() {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const navigate = useNavigate();
 
     const [areOverCapacity, SET_areOverCapacity] = useState();

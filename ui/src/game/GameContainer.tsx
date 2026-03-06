@@ -6,12 +6,12 @@ import ErrorMessage from '../root/ErrorMessage';
 import Game from './Game';
 import { WsServer } from '../api/ws';
 import { Typography } from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import { ErrorDisplay } from '../shared/models/ui/uiState';
 import { GameInstanceUUID } from '../shared/models/system/uuid';
 import { useParams } from 'react-router-dom';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
     root: {
         height: '100vh',
         width: '100vw',
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function GameContainer(props): any {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const dispatch = useDispatch();
     const [gameLoaded, setGameLoaded] = useState(false);
     const [error, setError] = useState<ErrorDisplay | undefined>();

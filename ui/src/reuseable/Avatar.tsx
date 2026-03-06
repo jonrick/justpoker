@@ -2,13 +2,11 @@ import React from 'react';
 import classnames from 'classnames';
 
 import { Theme } from '@mui/material/styles';
-import makeStyles from '@mui/styles/makeStyles';
-import createStyles from '@mui/styles/createStyles';
+import { makeStyles } from 'tss-react/mui';
 import AvatarsSvg from '../assets/avatars/avatars.svg';
 import { AvatarKeys, getRandomAvatarKey } from '../shared/models/ui/assets';
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useStyles = makeStyles()((theme: Theme) => ({
         svg: {
             filter: `drop-shadow(0px 0px 3px rgba(0, 0, 0, .7))`,
         },
@@ -17,7 +15,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 function Avatar(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const { className, avatarKey } = props;
 
     function getHref() {

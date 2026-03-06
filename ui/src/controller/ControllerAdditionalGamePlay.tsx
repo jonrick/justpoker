@@ -5,8 +5,7 @@ import { controllerSelector, selectGameParameters, globalGameStateSelector } fro
 
 import classnames from 'classnames';
 import { Theme } from '@mui/material/styles';
-import createStyles from '@mui/styles/createStyles';
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
@@ -15,8 +14,7 @@ import BuyChipsDialog from '../game/BuyChipsDialog';
 import { WsServer } from '../api/ws';
 import { ClientActionType, ClientWsMessageRequest, ClientStraddleRequest } from '../shared/models/api/api';
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useStyles = makeStyles()((theme: Theme) => ({
         additionalGamePlayTopButtons: {
             display: 'flex',
             alignItems: 'center',
@@ -52,7 +50,7 @@ const useStyles = makeStyles((theme: Theme) =>
 // provides the user with additional game play interactions:
 // time bank, sit out next hand, straddle
 function ControllerAdditionalGamePlay(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const { rootClassName } = props;
     const { toAct, dealInNextHand, timeBanks, willStraddle } = useSelector(controllerSelector);
     const { allowStraddle, allowTimeBanks } = useSelector(selectGameParameters);

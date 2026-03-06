@@ -1,12 +1,10 @@
 import React from 'react';
 
 import { Theme } from '@mui/material/styles';
-import makeStyles from '@mui/styles/makeStyles';
-import createStyles from '@mui/styles/createStyles';
+import { makeStyles } from 'tss-react/mui';
 import { Typography, Button } from '@mui/material';
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useStyles = makeStyles()((theme: Theme) => ({
         root: {
             display: 'flex',
             position: 'absolute',
@@ -36,7 +34,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 function GameDisconnectionMessage(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
 
     return (
         <div className={classes.root}>

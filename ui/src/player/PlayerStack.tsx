@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import CountUp from 'react-countup';
 
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import Typography from '@mui/material/Typography';
 import AdminIcon from '@mui/icons-material/Stars';
 
@@ -14,7 +14,7 @@ import { useChipFormatter } from '../game/ChipFormatter';
 import { useSelector } from 'react-redux';
 import { selectUseCents } from '../store/selectors';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
     stackCont: {
         width: '100%',
         marginTop: '-1vmin',
@@ -106,7 +106,7 @@ function usePrevious(value) {
 }
 
 function PlayerStack(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const { player, onClickStack } = props;
     const {
         stack,

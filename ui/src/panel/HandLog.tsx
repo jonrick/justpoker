@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { makeStyles, createStyles } from '@mui/styles';
+import { makeStyles } from 'tss-react/mui';
 import { Theme } from '@mui/material/styles';
 
 import classnames from 'classnames';
@@ -35,8 +35,7 @@ import { useChipFormatter } from '../game/ChipFormatter';
 const handLogTextContentSize = '1.5vmin';
 const handLogCardSize = '1.8vmin';
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useStyles = makeStyles()((theme: Theme) => ({
         root: {
             display: 'flex',
             justifyContent: 'space-between',
@@ -151,7 +150,7 @@ interface HandLogProps {
 }
 let scrollFixer;
 function HandLog(props: HandLogProps) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const { hideChatLog, hideHandLog } = props;
     const { gameInstanceUUID } = useParams<{ gameInstanceUUID: string }>();
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import classnames from 'classnames';
 import ChipStack from './ChipStack';
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import Typography from '@mui/material/Typography';
 import { useChipFormatter } from '../game/ChipFormatter';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
     root: {
         display: 'flex',
         justifyContent: 'center',
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Bet(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const { className, style, amount, id } = props;
     const ChipFormatter = useChipFormatter();
 

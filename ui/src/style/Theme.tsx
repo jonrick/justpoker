@@ -11,8 +11,6 @@ import { red } from '@mui/material/colors';
 import { Background } from './colors';
 import cloneDeep from 'lodash/cloneDeep';
 
-import '@mui/styles';
-
 import { Theme } from '@mui/material/styles';
 
 declare module '@mui/material/styles' {
@@ -22,10 +20,6 @@ declare module '@mui/material/styles' {
     interface ThemeOptions {
         custom?: any;
     }
-}
-
-declare module '@mui/styles/defaultTheme' {
-  interface DefaultTheme extends Theme {}
 }
 
 export const DEFAULT_PREFERENCES: UserPreferences = {

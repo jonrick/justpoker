@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import get from 'lodash/get';
 import { getLedger } from '../api/http';
 
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import { UILedger, UILedgerRow } from '../shared/models/state/ledger';
 import { ErrorDisplay } from '../shared/models/ui/uiState';
 import { getEpochTimeMs } from '../shared/util/util';
@@ -13,7 +13,7 @@ import { useChipFormatter } from '../game/ChipFormatter';
 import { IconButton, Tooltip } from '@mui/material';
 import RefreshIcon from '@mui/icons-material/Refresh';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
     root: {
         height: '100vh',
         width: '100vw',
@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Ledger(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const [ledger, setLedger] = useState<UILedger>([]);
     const { gameInstanceUUID } = useParams<{ gameInstanceUUID: string }>();
     const [error, setError] = useState<ErrorDisplay | undefined>();
@@ -95,7 +95,7 @@ const columns = [
 ] as any;
 
 function LedgerTable(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const ledger: UILedgerRow[] = props.ledger;
 
     const ChipFormatter = useChipFormatter(get(window, 'useCents', false));

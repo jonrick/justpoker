@@ -2,12 +2,10 @@ import React from 'react';
 import classnames from 'classnames';
 import { Suit } from '../shared/models/game/cards';
 import { Theme } from '@mui/material/styles';
-import makeStyles from '@mui/styles/makeStyles';
-import createStyles from '@mui/styles/createStyles';
+import { makeStyles } from 'tss-react/mui';
 import Color from 'color';
 
-const useLightenedStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useLightenedStyles = makeStyles()((theme: Theme) => ({
         [Suit.HEARTS]: {
             fill: Color(theme.custom.HEARTS).lighten(0.7).string(), // needs to be visible on dark
         },
@@ -23,8 +21,7 @@ const useLightenedStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-const useNormalStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useNormalStyles = makeStyles()((theme: Theme) => ({
         whiteFill: { fill: 'white' },
         [Suit.HEARTS]: {
             fill: Color(theme.custom.HEARTS).string(),
@@ -42,35 +39,35 @@ const useNormalStyles = makeStyles((theme: Theme) =>
 );
 
 function SuitIcon(props) {
-    const lightenedStyles = useLightenedStyles();
-    const normalStyles = useNormalStyles();
+    const { classes: lightenedClasses } = useLightenedStyles();
+    const { classes: normalClasses } = useNormalStyles();
     const { suit, className, color, lightened } = props;
 
     function generateStringFromSuit(suit) {
-        const classes = lightened ? lightenedStyles : normalStyles;
+        const classes = lightened ? lightenedClasses : normalClasses;
         switch (suit) {
             case Suit.HEARTS:
                 return (
                     <Heart
-                        className={classnames(className, { [classes[suit]]: color, [normalStyles.whiteFill]: !color })}
+                        className={classnames(className, { [classes[suit]]: color, [normalClasses.whiteFill]: !color })}
                     />
                 );
             case Suit.SPADES:
                 return (
                     <Spade
-                        className={classnames(className, { [classes[suit]]: color, [normalStyles.whiteFill]: !color })}
+                        className={classnames(className, { [classes[suit]]: color, [normalClasses.whiteFill]: !color })}
                     />
                 );
             case Suit.CLUBS:
                 return (
                     <Club
-                        className={classnames(className, { [classes[suit]]: color, [normalStyles.whiteFill]: !color })}
+                        className={classnames(className, { [classes[suit]]: color, [normalClasses.whiteFill]: !color })}
                     />
                 );
             case Suit.DIAMONDS:
                 return (
                     <Diamond
-                        className={classnames(className, { [classes[suit]]: color, [normalStyles.whiteFill]: !color })}
+                        className={classnames(className, { [classes[suit]]: color, [normalClasses.whiteFill]: !color })}
                     />
                 );
         }

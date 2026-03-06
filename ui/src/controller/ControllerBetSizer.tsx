@@ -1,10 +1,8 @@
 import React from 'react';
 
 import classnames from 'classnames';
-import { Theme, useTheme } from '@mui/material/styles';
-import createStyles from '@mui/styles/createStyles';
-import makeStyles from '@mui/styles/makeStyles';
-import withStyles from '@mui/styles/withStyles';
+import { Theme, useTheme, styled } from '@mui/material/styles';
+import { makeStyles } from 'tss-react/mui';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Button from '@mui/material/Button';
 import Slider from '@mui/material/Slider';
@@ -13,28 +11,27 @@ import Color from 'color';
 import TextFieldWrap from '../reuseable/TextFieldWrap';
 import { BettingRoundActionType } from '../shared/models/game/betting';
 
-const ThickSlider = withStyles({
+const ThickSlider = styled(Slider)({
     root: {
         height: 8,
     },
-    thumb: {
+    '& .MuiSlider-thumb': {
         // !important needed to override disabled styles
         height: '1.6vmin !important',
         width: '1.6vmin !important',
         marginTop: '-0.4vmin',
     },
-    track: {
+    '& .MuiSlider-track': {
         height: '0.8vmin',
         borderRadius: 4,
     },
-    rail: {
+    '& .MuiSlider-rail': {
         height: '0.8vmin',
         borderRadius: 4,
     },
-})(Slider);
+});
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useStyles = makeStyles()((theme: Theme) => ({
         // root container
         bettingCont: {
             marginRight: '2vmin',
@@ -116,7 +113,7 @@ const useStyles = makeStyles((theme: Theme) =>
 // allows user to set the size of their bet within valid bet options
 // is vertically structred with three main components, a free numeric textfield, a slider, and fixed betsizing buttons
 function ControllerBetSizer(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const theme = useTheme();
     const { sizingButtons, min, max, value, onChange, onClickActionButton, betInputRef, bigBlind, disabled } = props;
 

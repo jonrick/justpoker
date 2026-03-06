@@ -1,9 +1,9 @@
 import React from 'react';
 import CardLarge from './CardLarge';
 import classnames from 'classnames';
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
     communityCardsCont: {
         height: '25%',
         width: '80%',
@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 function CommunityCards(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const { communityCards, className } = props;
 
     function generatePlaceholders() {

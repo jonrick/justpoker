@@ -5,8 +5,7 @@ import { controllerSelector, selectGameParameters } from '../store/selectors';
 import Color from 'color';
 import classnames from 'classnames';
 import { Theme } from '@mui/material/styles';
-import createStyles from '@mui/styles/createStyles';
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 
@@ -19,8 +18,7 @@ import { WsServer } from '../api/ws';
 import { ClientActionType, ClientWsMessageRequest } from '../shared/models/api/api';
 import { useChipFormatter } from '../game/ChipFormatter';
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useStyles = makeStyles()((theme: Theme) => ({
         sizeAndBetActionsCont: {
             width: '65%',
             height: '100%',
@@ -57,7 +55,7 @@ const useStyles = makeStyles((theme: Theme) =>
             fontSize: '1.6vmin',
             marginRight: '2vmin',
         },
-        ...theme.custom.ACTION_BUTTONS,
+        ...(theme.custom.ACTION_BUTTONS as any),
         semiDisabledFold: {
             borderColor: Color(theme.custom.ACTION_BUTTONS.FOLD.borderColor).desaturate(0.7).darken(0.5).string(),
             color: Color(theme.custom.ACTION_BUTTONS.FOLD.color).desaturate(0.7).darken(0.5).string(),
@@ -73,7 +71,7 @@ const useStyles = makeStyles((theme: Theme) =>
 // the presence of these buttons are driver by the server via bettingActionButtons property in controller
 // conatins logic to queue bet actions when it is not users turn to act
 function ControllerBetAction(props) {
-    const classes = useStyles();
+    const { classes } = useStyles() as { classes: any };
     const { rootClassName } = props;
     const {
         toAct,

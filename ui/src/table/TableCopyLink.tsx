@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 
 import { Theme } from '@mui/material/styles';
-import makeStyles from '@mui/styles/makeStyles';
-import createStyles from '@mui/styles/createStyles';
+import { makeStyles } from 'tss-react/mui';
 import { Typography, ButtonBase } from '@mui/material';
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useStyles = makeStyles()((theme: Theme) => ({
         root: {
             zIndex: 5,
             cursor: 'pointer',
@@ -42,7 +40,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 function TableCopyLink(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const [copied, copiedSet] = useState(false);
     const [copiedFailed, SET_copiedFailed] = useState(false);
     function handleClick() {

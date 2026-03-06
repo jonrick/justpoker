@@ -1,7 +1,7 @@
 import React from 'react';
 
 import classnames from 'classnames';
-import { makeStyles, createStyles } from '@mui/styles';
+import { makeStyles } from 'tss-react/mui';
 import { Theme } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
 
@@ -11,8 +11,7 @@ import ControllerBetAction from './ControllerBetAction';
 import ControllerGameInfo from './ControllerGameInfo';
 import ControllerAdditionalGamePlay from './ControllerAdditionalGamePlay';
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useStyles = makeStyles()((theme: Theme) => ({
         root: {
             position: 'absolute',
             right: 0,
@@ -67,7 +66,7 @@ export interface ControllerProps {
 // ControllerRoot defines basic visual structure of the controller
 // remains unconnected to global state to avoid unecessary rerenders
 function ControllerRoot(props: ControllerProps) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const { className } = props;
 
     return (

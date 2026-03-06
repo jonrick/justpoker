@@ -3,11 +3,9 @@ import classnames from 'classnames';
 
 import { Theme } from '@mui/material/styles';
 
-import makeStyles from '@mui/styles/makeStyles';
-import createStyles from '@mui/styles/createStyles';
+import { makeStyles } from 'tss-react/mui';
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useStyles = makeStyles()((theme: Theme) => ({
         img: {
             width: `100%`,
             height: `100%`,
@@ -17,7 +15,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 function Animoji(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const { className, reaction, animated } = props;
     const [asset, SET_asset] = useState();
 

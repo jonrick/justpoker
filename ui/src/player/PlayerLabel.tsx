@@ -3,11 +3,9 @@ import React, { useState, useEffect } from 'react';
 import classnames from 'classnames';
 import { Theme } from '@mui/material/styles';
 
-import makeStyles from '@mui/styles/makeStyles';
-import createStyles from '@mui/styles/createStyles';
+import { makeStyles } from 'tss-react/mui';
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useStyles = makeStyles()((theme: Theme) => ({
         root: {
             zIndex: -1,
             display: 'flex',
@@ -31,7 +29,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 function PlayerLabel(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const { children, className } = props;
 
     const [show, setShow] = useState(false);

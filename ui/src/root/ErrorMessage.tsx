@@ -1,10 +1,10 @@
 import React from 'react';
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import { ErrorDisplay } from '../shared/models/ui/uiState';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
     title: {
         position: 'absolute',
         margin: 36,
@@ -24,7 +24,7 @@ export interface ErrorMessageProps {
 }
 
 function ErrorMessage(props: ErrorMessageProps) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const { message, redirect } = props.errorDisplay;
     return (
         <>

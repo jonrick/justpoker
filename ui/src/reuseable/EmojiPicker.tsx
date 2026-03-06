@@ -3,15 +3,13 @@ import 'emoji-mart/css/emoji-mart.css';
 import { Picker } from 'emoji-mart';
 import classnames from 'classnames';
 import { Theme } from '@mui/material/styles';
-import makeStyles from '@mui/styles/makeStyles';
-import createStyles from '@mui/styles/createStyles';
+import { makeStyles } from 'tss-react/mui';
 import Popper from '@mui/material/Popper';
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 import IconButton from '@mui/material/IconButton';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useStyles = makeStyles()((theme: Theme) => ({
         button: {},
         popper: {
             zIndex: 10,
@@ -22,7 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function EmojiPicker(props) {
     const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
     const [open, setOpen] = React.useState(false);
-    const classes = useStyles();
+    const { classes } = useStyles();
 
     const { placement = 'top', className, ...rest } = props;
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {

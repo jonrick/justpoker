@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 
 import { Theme } from '@mui/material/styles';
-import makeStyles from '@mui/styles/makeStyles';
-import createStyles from '@mui/styles/createStyles';
+import { makeStyles } from 'tss-react/mui';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import AddChipDialog from '../game/SetChipDialog';
@@ -16,8 +15,7 @@ import ConfirmationDialog from '../reuseable/ConfirmationDialog';
 import { AVATAR_LOCAL_STORAGE_KEY } from '../game/JoinGameDialog';
 import { UiPlayer } from '../shared/models/ui/uiState';
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useStyles = makeStyles()((theme: Theme) => ({
         avatarIcon: {
             height: '5vmin',
             width: '5vmin',
@@ -30,7 +28,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 function PlayerMenu(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const { anchorEl, handleClose, setHeroRotation, virtualPositon, player } = props;
     const { stack, name, uuid, admin, quitting, disconnected } = player as UiPlayer;
     const [chipsDialog, setChipsDialog] = useState(false);

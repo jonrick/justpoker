@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Theme } from '@mui/material/styles';
 
-import makeStyles from '@mui/styles/makeStyles';
-import createStyles from '@mui/styles/createStyles';
+import { makeStyles } from 'tss-react/mui';
 
 import classnames from 'classnames';
 
@@ -17,8 +16,7 @@ import { UiChatMessage } from '../shared/models/ui/uiState';
 import { getPlayerNameColor } from '../style/colors';
 import { ScrollFixer } from '../utils';
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useStyles = makeStyles()((theme: Theme) => ({
         chatLogContainer: {
             display: 'flex',
             height: '100%',
@@ -130,7 +128,7 @@ interface ChatLogProps {
 let scrollFixer;
 function ChatLog(props: ChatLogProps) {
     const { hideChatLog, hideHandLog, setUnreadChats } = props;
-    const classes = useStyles();
+    const { classes } = useStyles();
 
     const [chatMessages, setChatMessages] = useState([] as UiChatMessage[]);
     const [draftChatMessage, setDraftChatMessage] = useState('');

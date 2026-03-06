@@ -10,7 +10,7 @@ import { red } from '@mui/material/colors';
 import { deepPurple } from '@mui/material/colors';
 import { brown, lime } from '@mui/material/colors';
 import { Suit } from '../shared/models/game/cards';
-import { makeStyles } from '@mui/styles';
+import { makeStyles } from 'tss-react/mui';
 
 export const Background = {
     blue: blue[600],
@@ -46,7 +46,7 @@ export function getPlayerNameColor(seatNumber: number) {
     } else return grey[400];
 }
 
-export const useColoredCardBackgroundStyles =  makeStyles((theme) => ({
+export const useColoredCardBackgroundStyles =  makeStyles()((theme) => ({
     base: {
         color: 'rgb(242, 240, 237)',
     },
@@ -64,7 +64,7 @@ export const useColoredCardBackgroundStyles =  makeStyles((theme) => ({
     },
 }));
 
-export const useWhiteCardBackgroundStyles =  makeStyles((theme) => ({
+export const useWhiteCardBackgroundStyles =  makeStyles()((theme) => ({
     base: {
         backgroundColor: 'rgb(242, 240, 237)',
     },

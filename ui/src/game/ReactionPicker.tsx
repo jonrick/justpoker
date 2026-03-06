@@ -7,8 +7,7 @@ import { ClientActionType, ClientWsMessageRequest } from '../shared/models/api/a
 import IconPicker from '../reuseable/IconPicker';
 
 import { Theme } from '@mui/material/styles';
-import makeStyles from '@mui/styles/makeStyles';
-import createStyles from '@mui/styles/createStyles';
+import { makeStyles } from 'tss-react/mui';
 import IconButton from '@mui/material/IconButton';
 import Paper from '@mui/material/Paper';
 import MoodIcon from '@mui/icons-material/Mood';
@@ -17,8 +16,7 @@ import { AnimojiKeysDefaultRecentlyUsed, AnimojiKeys } from '../shared/models/ui
 import MoreHoriz from '@mui/icons-material/MoreHoriz';
 import { useStickyState } from '../utils';
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useStyles = makeStyles()((theme: Theme) => ({
         hoverArea: {
             zIndex: 5,
             position: 'absolute',
@@ -72,7 +70,7 @@ const animoji_options = Object.keys(AnimojiKeys).filter((key, index) => key !== 
 const RECENTLY_USED_REACTIONS_KEY = 'jp-recent-reaction-keys-v2';
 
 function ReactionPicker(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const [open, SET_open] = React.useState(false);
     const heroPlayerUUID = useSelector(heroPlayerUUIDSelector);
     const { isHeroAtTable, isSpectator } = useSelector(globalGameStateSelector);

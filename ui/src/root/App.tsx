@@ -3,8 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemePreferences, UserPreferences } from '../shared/models/ui/userPreferences';
 import cloneDeep from 'lodash/cloneDeep';
 import { CUSTOM_THEME, DEFAULT_PREFERENCES } from '../style/Theme';
-import { ThemeProvider } from '@mui/styles';
-import { ThemeProvider as MuiThemeProvider, Theme, StyledEngineProvider } from '@mui/material/styles';
+import { ThemeProvider, Theme, StyledEngineProvider } from '@mui/material/styles';
 import GameContainer from '../game/GameContainer';
 import { createTheme } from '@mui/material/styles';
 
@@ -13,11 +12,6 @@ const Ledger = React.lazy(() => import('../ledger/Ledger'));
 import ErrorBoundary from './ErrorBoundry';
 import Color from 'color';
 
-
-declare module '@mui/styles/defaultTheme' {
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface DefaultTheme extends Theme {}
-}
 
 
 const USER_PREFS_LOCAL_STORAGE_KEY = 'jp-user-prefs';
@@ -73,16 +67,14 @@ function App() {
             <ThemeSetter.Provider value={{ curPrefs: pref, themeSetter: setNewTheme }}>
                 <StyledEngineProvider injectFirst>
                     <ThemeProvider theme={v5Theme}>
-                        <MuiThemeProvider theme={v5Theme}>
-                            <Router>
-                                <Routes>
-                                    <Route path="/table/test" element={<GameContainer useTestGame />} />
-                                    <Route path="/table/:gameInstanceUUID" element={<GameContainer />} />
-                                    <Route path="/ledger/:gameInstanceUUID" element={<Suspense fallback={<div>Loading...</div>}><Ledger /></Suspense>} />
-                                    <Route path="/" element={<Home />} />
-                                </Routes>
-                            </Router>
-                        </MuiThemeProvider>
+                        <Router>
+                            <Routes>
+                                <Route path="/table/test" element={<GameContainer useTestGame />} />
+                                <Route path="/table/:gameInstanceUUID" element={<GameContainer />} />
+                                <Route path="/ledger/:gameInstanceUUID" element={<Suspense fallback={<div>Loading...</div>}><Ledger /></Suspense>} />
+                                <Route path="/" element={<Home />} />
+                            </Routes>
+                        </Router>
                     </ThemeProvider>
                 </StyledEngineProvider>
             </ThemeSetter.Provider>

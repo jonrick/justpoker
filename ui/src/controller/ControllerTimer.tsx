@@ -5,13 +5,11 @@ import { heroPlayerTimerSelector, heroPlayerToAct } from '../store/selectors';
 
 import { Theme } from '@mui/material/styles';
 
-import makeStyles from '@mui/styles/makeStyles';
-import createStyles from '@mui/styles/createStyles';
+import { makeStyles } from 'tss-react/mui';
 
 const UPDATE_INTERVAL_SECS = 0.4;
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useStyles = makeStyles()((theme: Theme) => ({
         root: {
             width: '100%',
             opacity: 1,
@@ -39,7 +37,7 @@ const beginBelowSeconds = 10;
 // amount of time they have left in their turn
 // should begin animation at beginBelowSeconds and end at 0s
 function ControllerTimer() {
-    const classes = useStyles();
+    const { classes } = useStyles();
 
     const playerTimer = useSelector(heroPlayerTimerSelector);
 

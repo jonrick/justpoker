@@ -3,14 +3,12 @@ import classnames from 'classnames';
 import TextFieldWrap from './TextFieldWrap';
 
 import { Theme } from '@mui/material/styles';
-import makeStyles from '@mui/styles/makeStyles';
-import createStyles from '@mui/styles/createStyles';
+import { makeStyles } from 'tss-react/mui';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import { useChipFormatter } from '../game/ChipFormatter';
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useStyles = makeStyles()((theme: Theme) => ({
         amtCont: {
             display: 'flex',
             alignItems: 'stretch', // ensures both children take same height
@@ -36,7 +34,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 function FieldWithMinMaxButtons(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const { onChange, className, min, max, ...rest } = props;
     const ChipFormatter = useChipFormatter();
 

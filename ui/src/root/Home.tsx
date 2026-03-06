@@ -1,9 +1,9 @@
 import React from 'react';
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import MakeGame from './MakeGame';
 import { indigo } from '@mui/material/colors';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
     root: {
         height: '100vh',
         display: 'flex',
@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Home(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
 
     return (
         <div className={classes.root}>

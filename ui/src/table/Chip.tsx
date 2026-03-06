@@ -13,9 +13,9 @@ import { deepOrange } from '@mui/material/colors';
 import { red } from '@mui/material/colors';
 import { deepPurple } from '@mui/material/colors';
 
-import { makeStyles } from '@mui/styles';
+import { makeStyles } from 'tss-react/mui';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
     svgCircle: {
         strokeWidth: '5%',
         r: '28%',
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Chip(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const { yPos = '50%', xPos = '50%', amount } = props;
 
     function getChipHueFromAmount(amount) {

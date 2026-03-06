@@ -6,7 +6,7 @@ import { selectCanShowHideCards } from '../store/selectors';
 import { generateStringFromRank } from '../utils';
 import classnames from 'classnames';
 
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import Typography from '@mui/material/Typography';
 import SuitComponent from '../reuseable/Suit';
 import { Suit, Card } from '../shared/models/game/cards';
@@ -21,7 +21,7 @@ import { ReactComponent as Koi } from '../assets/logo/koi.svg';
 const NORMAL_CARD_SIZE = '3.4vmin';
 const SIZE_CARD_SIZE = '2.5vmin';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
     root: {
         borderRadius: 6,
         textAlign: 'center',
@@ -126,7 +126,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function CardSmall(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const {
         suit,
         rank,
@@ -142,8 +142,8 @@ function CardSmall(props) {
     const cardId = `${suit}-${rank}`;
     const prevIsBeingShown = usePrevious(isBeingShown);
     const canShowHideCards = useSelector(selectCanShowHideCards);
-    const coloredCardBackgroundClasses = useColoredCardBackgroundStyles();
-    const whiteCardBackgroundClasses = useWhiteCardBackgroundStyles();
+    const { classes: coloredCardBackgroundClasses } = useColoredCardBackgroundStyles();
+    const { classes: whiteCardBackgroundClasses } = useWhiteCardBackgroundStyles();
     const { curPrefs } = useContext(ThemeSetter);
     const isFlipable = hero && canShowHideCards && !(cannotHideCards && isBeingShown);
 

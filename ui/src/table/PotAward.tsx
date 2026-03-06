@@ -2,12 +2,10 @@ import React, { useEffect } from 'react';
 import classnames from 'classnames';
 import Bet from './Bet';
 import { Theme } from '@mui/material/styles';
-import makeStyles from '@mui/styles/makeStyles';
-import createStyles from '@mui/styles/createStyles';
+import { makeStyles } from 'tss-react/mui';
 import { animateAwardPot } from '../game/AnimiationModule';
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useStyles = makeStyles()((theme: Theme) => ({
         root: {
             zIndex: 5,
             margin: '2vmin',
@@ -16,7 +14,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 function PotAward(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const { index, awardPot } = props;
     const { winnerUUID, value } = awardPot;
     const potId = `ani_awardPot_${index}`;

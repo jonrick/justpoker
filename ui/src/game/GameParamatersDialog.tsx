@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import classnames from 'classnames';
 
 import { Theme } from '@mui/material/styles';
-import makeStyles from '@mui/styles/makeStyles';
-import createStyles from '@mui/styles/createStyles';
+import { makeStyles } from 'tss-react/mui';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -23,8 +22,7 @@ import RadioForm from '../reuseable/RadioForm';
 import IconTooltip from '../reuseable/IconTooltip';
 import { remove } from 'lodash';
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
+const useStyles = makeStyles()((theme: Theme) => ({
         dialog: {},
         tabCont: {
             display: 'flex',
@@ -73,7 +71,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 function GameParamatersDialog(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const { open, onSave, onCancel, gameParameters, disabled } = props;
 
     const [curGameParameters, SET_curGameParameters] = useState(gameParameters);

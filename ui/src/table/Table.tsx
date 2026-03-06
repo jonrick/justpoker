@@ -12,7 +12,7 @@ import { tableSelector, playersSelector, globalGameStateSelector } from '../stor
 import { ClientActionType, ClientWsMessageRequest } from '../shared/models/api/api';
 import { WsServer } from '../api/ws';
 
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import Button from '@mui/material/Button';
 import { Typography, Zoom } from '@mui/material';
 import { SELENIUM_TAGS } from '../shared/models/test/seleniumTags';
@@ -47,7 +47,7 @@ function positionToPlacement(virtualPositon) {
 
     return dict[virtualPositon];
 }
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
     root: {
         transform: 'translateY(-1.5%)',
         display: 'flex',
@@ -145,7 +145,7 @@ function mod(n, m) {
 }
 
 function Table(props) {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const { className } = props;
     const {
         canStartGame,
