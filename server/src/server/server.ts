@@ -252,9 +252,9 @@ class Server {
             const ip = req.connection.remoteAddress;
             logger.verbose(`WS connection request from: ${ip} on url: ${req.url}`);
 
-            const parsedQuery = queryString.parseUrl(req.url);
-            const clientUUID = parsedQuery.query.clientUUID as ClientUUID;
-            const gameInstanceUUID = parsedQuery.query.gameInstanceUUID as GameInstanceUUID;
+            const url = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
+            const clientUUID = url.searchParams.get('clientUUID') as ClientUUID;
+            const gameInstanceUUID = url.searchParams.get('gameInstanceUUID') as GameInstanceUUID;
 
             this.onConnectionToGame(ws, gameInstanceUUID, clientUUID);
             return;
