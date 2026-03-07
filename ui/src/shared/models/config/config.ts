@@ -22,7 +22,7 @@ export const CONFIGS: Configs = {
         SERVER_PORT: 8080,
         CLIENT_NEED_PORT: true,
         SECURE_WS: false,
-        HTTPS: false,
+        HTTPS: true,
     },
 
     PROD: {
