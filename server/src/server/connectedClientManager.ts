@@ -18,6 +18,7 @@ export interface ClientGroups {
 export interface Client {
     ws: WebSocket;
     lastMessaged: number;
+    isAlive: boolean;
 }
 
 // ConnectedClientManager manages WS connections for the sever. WS are grouped together depending on which need to be sent updates upon the same state mutations
@@ -28,6 +29,7 @@ export class ConnectedClientManager {
 
     constructor(private stateConverter: StateConverter) {
         setInterval(() => this.clearStaleClients(), ATTEMPT_EXPIRE_CLIENT_INTERVAL);
+        setInterval(() => this.pingClients(), 30000);
     }
 
     getClientGroups(): ClientGroups {
@@ -56,15 +58,31 @@ export class ConnectedClientManager {
         }
     }
 
+    pingClients() {
+        Object.values(this.ClientGroups).forEach((group) => {
+            Object.values(group).forEach((client) => {
+                if (client.isAlive === false) return client.ws.terminate();
+
+                client.isAlive = false;
+                client.ws.ping();
+            });
+        });
+    }
+
     addOrUpdateClientInGroup(gameInstanceUUID: GameInstanceUUID, clientUUID: ClientUUID, ws: WebSocket): boolean {
         if (this.ClientGroups[gameInstanceUUID]) {
             const client = this.ClientGroups[gameInstanceUUID][clientUUID];
             if (client) {
                 // update ws if client exists
                 client.ws = ws;
+                client.isAlive = true;
             } else {
                 // create if client doesnt exist
-                this.ClientGroups[gameInstanceUUID][clientUUID] = { ws: ws, lastMessaged: getEpochTimeMs() };
+                this.ClientGroups[gameInstanceUUID][clientUUID] = {
+                    ws: ws,
+                    lastMessaged: getEpochTimeMs(),
+                    isAlive: true,
+                };
             }
 
             return true;

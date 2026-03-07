@@ -296,6 +296,10 @@ class Server {
             this.connectedClientManager.setClientTimeMessaged(gameInstanceUUID, clientUUID);
             this.processGameMessage(data, clientUUID, gameInstanceUUID);
         });
+        ws.on('pong', () => {
+            const client = this.connectedClientManager.getClientGroups()[gameInstanceUUID]?.[clientUUID];
+            if (client) client.isAlive = true;
+        });
         ws.on('close', (data: WebSocket.Data) => {
             this.onWSClose(data, clientUUID, gameInstanceUUID);
         });
