@@ -34,7 +34,7 @@ export class WsServer {
     static timeLastSentMsg: number;
 
     static openWs(gameInstanceUUID: GameInstanceUUID) {
-        const wsURL = `ws${config.SECURE_WS ? 's' : ''}://${config.SERVER_URL}${
+        const wsURL = `ws${config.SECURE_WS ? 's' : ''}://${config.WS_URL}${
             config.CLIENT_NEED_PORT ? `:${config.SERVER_PORT}` : ''
         }`;
         const url = new URL(wsURL);

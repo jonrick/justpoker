@@ -9,7 +9,8 @@ export declare interface Configs {
 }
 
 export declare interface Config {
-    SERVER_URL: string;
+    API_URL: string;
+    WS_URL: string;
     SERVER_PORT: number;
     CLIENT_NEED_PORT: boolean;
     SECURE_WS: boolean;
@@ -18,7 +19,8 @@ export declare interface Config {
 
 export const CONFIGS: Configs = {
     DEV: {
-        SERVER_URL: 'localhost',
+        API_URL: 'localhost',
+        WS_URL: 'localhost',
         SERVER_PORT: 8080,
         CLIENT_NEED_PORT: true,
         SECURE_WS: false,
@@ -26,7 +28,8 @@ export const CONFIGS: Configs = {
     },
 
     PROD: {
-        SERVER_URL: '129.146.172.12',
+        API_URL: 'poker.jonrick.com',
+        WS_URL: '129.146.172.12',
         SERVER_PORT: 8080,
         CLIENT_NEED_PORT: true,
         SECURE_WS: true,

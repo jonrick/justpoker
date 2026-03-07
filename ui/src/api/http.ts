@@ -26,7 +26,7 @@ export const getLedger = (gameInstanceUUID, onSuccess, onError) => {
 };
 
 export function computeHandLogGETurl(gameInstanceUUID) {
-    return `http${config.HTTPS ? 's' : ''}://${config.SERVER_URL}:${
+    return `http${config.HTTPS ? 's' : ''}://${config.API_URL}:${
         config.SERVER_PORT
     }/api/handlog?gameInstanceUUID=${gameInstanceUUID}`;
 }
