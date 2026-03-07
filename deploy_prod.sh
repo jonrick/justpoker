@@ -12,7 +12,13 @@ cd ui
 npm install --legacy-peer-deps
 # Increase memory limit to avoid OOM
 export NODE_OPTIONS=--max-old-space-size=4096
-npm run build
+
+if [ "$SKIP_TSC" = "true" ]; then
+    echo "⏩ Skipping TypeScript type-checking..."
+    npx vite build
+else
+    npm run build
+fi
 cd ..
 
 # 2. Setup the Server
