@@ -29,10 +29,10 @@ export const CONFIGS: Configs = {
 
     PROD: {
         API_URL: 'poker.jonrick.com',
-        WS_URL: '129.146.172.12',
+        WS_URL: 'poker.jonrick.com',
         SERVER_PORT: 8080,
-        CLIENT_NEED_PORT: true,
-        SECURE_WS: false,
+        CLIENT_NEED_PORT: false,
+        SECURE_WS: true,
         HTTPS: true,
     },
 };

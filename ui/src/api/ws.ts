@@ -32,6 +32,7 @@ export class WsServer {
     static ws: WebSocket;
     static subscriptions: { [key: string]: any } = {};
     static timeLastSentMsg: number;
+    static pingInterval: number | null = null;
 
     static openWs(gameInstanceUUID: GameInstanceUUID) {
         const wsURL = `ws${config.SECURE_WS ? 's' : ''}://${config.WS_URL}${
@@ -46,10 +47,22 @@ export class WsServer {
         WsServer.ws.onmessage = WsServer.onGameMessage;
         WsServer.ws.onclose = WsServer.onWSClose;
         WsServer.timeLastSentMsg = getEpochTimeMs();
+
+        // Cloudflare Heartbeat: Send a ping every 15 seconds to keep the tunnel alive
+        if (WsServer.pingInterval) window.clearInterval(WsServer.pingInterval);
+        WsServer.pingInterval = window.setInterval(() => {
+            WsServer.sendKeepAliveMessage();
+        }, 15000);
+
         return true;
     }
 
     private static onWSClose() {
+        if (WsServer.pingInterval) {
+            window.clearInterval(WsServer.pingInterval);
+            WsServer.pingInterval = null;
+        }
+
         const key = 'onclose';
         WsServer.subscriptions[key].forEach((func) => func());
     }
