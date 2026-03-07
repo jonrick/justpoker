@@ -61,8 +61,6 @@ export class ConnectedClientManager {
     pingClients() {
         Object.values(this.ClientGroups).forEach((group) => {
             Object.values(group).forEach((client) => {
-                if (client.isAlive === false) return client.ws.terminate();
-
                 client.isAlive = false;
                 client.ws.ping();
             });

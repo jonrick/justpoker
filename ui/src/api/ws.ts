@@ -32,13 +32,19 @@ export class WsServer {
     static ws: WebSocket;
     static subscriptions: { [key: string]: any } = {};
     static timeLastSentMsg: number;
-    static pingInterval: number | null = null;
+    static pingInterval: any = null;
+    static lastGameInstanceUUID: GameInstanceUUID | null = null;
+    static isConnecting: boolean = false;
 
     static openWs(gameInstanceUUID: GameInstanceUUID) {
         const wsURL = `ws${config.SECURE_WS ? 's' : ''}://${config.WS_URL}${
             config.CLIENT_NEED_PORT ? `:${config.SERVER_PORT}` : ''
         }`;
         const url = new URL(wsURL);
+        if (WsServer.isConnecting) return;
+        WsServer.isConnecting = true;
+        WsServer.lastGameInstanceUUID = gameInstanceUUID;
+
         const storedClientUUID = window.localStorage.getItem(clientUUIDCookieID);
         if (storedClientUUID) url.searchParams.set('clientUUID', storedClientUUID);
         if (gameInstanceUUID) url.searchParams.set('gameInstanceUUID', gameInstanceUUID);
@@ -46,18 +52,28 @@ export class WsServer {
         WsServer.ws = new WebSocket(url.toString(), []);
         WsServer.ws.onmessage = WsServer.onGameMessage;
         WsServer.ws.onclose = WsServer.onWSClose;
+        WsServer.ws.onopen = () => {
+            WsServer.isConnecting = false;
+            console.info('WebSocket Connected');
+        };
+        WsServer.ws.onerror = () => {
+            WsServer.isConnecting = false;
+        };
         WsServer.timeLastSentMsg = getEpochTimeMs();
 
-        // Cloudflare Heartbeat: Send a ping every 15 seconds to keep the tunnel alive
+        // Aggressive 5s heartbeat for Cloudflare
         if (WsServer.pingInterval) window.clearInterval(WsServer.pingInterval);
         WsServer.pingInterval = window.setInterval(() => {
-            WsServer.sendKeepAliveMessage();
-        }, 15000);
+            if (WsServer.ws.readyState === WebSocket.OPEN) {
+                WsServer.sendKeepAliveMessage();
+            }
+        }, 5000);
 
         return true;
     }
 
     private static onWSClose() {
+        WsServer.isConnecting = false;
         if (WsServer.pingInterval) {
             window.clearInterval(WsServer.pingInterval);
             WsServer.pingInterval = null;
@@ -65,6 +81,14 @@ export class WsServer {
 
         const key = 'onclose';
         WsServer.subscriptions[key].forEach((func) => func());
+
+        // Auto-reconnect after 1 second if we have a game instance
+        if (WsServer.lastGameInstanceUUID) {
+            console.info('Attempting automatic reconnection...');
+            setTimeout(() => {
+                WsServer.openWs(WsServer.lastGameInstanceUUID as GameInstanceUUID);
+            }, 1000);
+        }
     }
 
     // TODO redesign dataCommunications and create general websocket data object so we
