@@ -6,8 +6,8 @@ import * as WebSocket from 'ws';
 import express from 'express';
 import path from 'path';
 import bodyParser from 'body-parser';
-import queryString from 'query-string';
 import sgMail from '@sendgrid/mail';
+import { URL } from 'url';
 
 import { AddressInfo } from 'net';
 import { EventProcessorService } from '../io/eventProcessorService';
@@ -121,8 +121,8 @@ class Server {
         });
 
         router.get('/api/ledger', (req, res) => {
-            const parsedQuery = queryString.parseUrl(req.url);
-            const gameInstanceUUID = parsedQuery.query.gameInstanceUUID as GameInstanceUUID;
+            const url = new URL(req.url, `http://${req.headers.host}`);
+            const gameInstanceUUID = url.searchParams.get('gameInstanceUUID') as GameInstanceUUID;
             const ledger = this.gameInstanceManager.getLedgerForGameInstance(gameInstanceUUID);
             if (!ledger) {
                 logger.info(`ledger not found for ${gameInstanceUUID}`);
@@ -134,9 +134,9 @@ class Server {
 
         // TODO replace with UIHandLog response when frontend and models are complete
         router.get('/api/handlog', (req, res) => {
-            const parsedQuery = queryString.parseUrl(req.url);
-            const gameInstanceUUID = parsedQuery.query.gameInstanceUUID as GameInstanceUUID;
-            const clientUUID = parsedQuery.query.clientUUID as ClientUUID;
+            const url = new URL(req.url, `http://${req.headers.host}`);
+            const gameInstanceUUID = url.searchParams.get('gameInstanceUUID') as GameInstanceUUID;
+            const clientUUID = url.searchParams.get('clientUUID') as ClientUUID;
             const handLogs = this.gameInstanceManager.getHandLogsForGameInstance(gameInstanceUUID, clientUUID);
             if (!handLogs) {
                 logger.info(`HandLog not found for ${gameInstanceUUID}`);
