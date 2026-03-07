@@ -16,7 +16,7 @@ ui/.pnp.js
 ui/coverage
 
 # production
-ui/build
+# ui/build
 
 # misc
 ui/.DS_Store

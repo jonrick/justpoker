@@ -32,8 +32,25 @@ Users are identified via the `jp-client-uuid` key in local storage, so to test w
 
 ### Deployment Options
 
-#### 1. Manual Build (Helper Scripts) - RECOMMENDED
-Use these scripts to automate the production process on your server:
+#### 1. Local Build & Push (FASTEST) - RECOMMENDED for small servers
+If your server takes too long to build (e.g. 40+ mins), build locally on your dev machine:
+1. **On your local machine**: 
+   ```bash
+   cd ui
+   npm run build  # Builds in seconds/minutes
+   git add build -f 
+   git commit -m "chore: production build"
+   git push
+   ```
+2. **On your production server**:
+   ```bash
+   git pull
+   # No build needed! Just run:
+   ./run_prod.sh
+   ```
+
+#### 2. Manual Build (Helper Scripts)
+Use these scripts to automate the production process on your server (Warning: slow on small servers):
 ```bash
 # Make them executable first
 chmod +x deploy_prod.sh run_prod.sh
