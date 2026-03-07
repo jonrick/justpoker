@@ -26,11 +26,11 @@ export const CONFIGS: Configs = {
     },
 
     PROD: {
-        SERVER_URL: 'poker.jonrick.com',
+        SERVER_URL: '129.146.172.12',
         SERVER_PORT: 8080,
         CLIENT_NEED_PORT: false,
-        SECURE_WS: true,
-        HTTPS: true,
+        SECURE_WS: false,
+        HTTPS: false,
     },
 };
 
