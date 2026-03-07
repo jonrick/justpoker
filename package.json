@@ -2,7 +2,7 @@
     "private": true,
     "license": "UNLICENSED",
     "scripts": {
-        "preinstall": "cd server && npm install; cd ..; cd ui && npm install; ",
+        "preinstall": "npm install --legacy-peer-deps; cd server && npm install --legacy-peer-deps; cd ..; cd ui && npm install --legacy-peer-deps; ",
         "server": "cd server && npm run start",
         "ui": "cd ui && npm start",
         "start": "concurrently \"npm run server\" \"npm run ui\""

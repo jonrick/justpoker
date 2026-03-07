@@ -13,8 +13,8 @@ Running docker is not necessary to develop locally.
 The server and the UI are separate packages, with their own dependencies.
 Due to a limitation in the configuration options of create-react-app, the shared TS interfaces/models are found in `ui/src/shared/models` as opposed to some other top-level directory.
 
-After cloning repo, run
-`npm run preinstall`
+After cloning repo, run:
+`npm run preinstall -- --legacy-peer-deps`
 
 Running backend server:
 ```
@@ -32,27 +32,46 @@ Users are identified via the `jp-client-uuid` key in local storage, so to test w
 
 ### Deployment Options
 
-#### 1. Manual Production Build (No Docker)
-To build the application for production on your host machine:
+#### 1. Manual Build (Helper Scripts) - RECOMMENDED
+Use these scripts to automate the production process on your server:
+```bash
+# Make them executable first
+chmod +x deploy_prod.sh run_prod.sh
+
+# Run the build (UI + Server deps)
+./deploy_prod.sh
+
+# Start the application
+./run_prod.sh
+```
+
+#### 2. Manual Build (Step-by-Step)
+If you prefer to run steps individually:
 
 1. **Build the UI**:
    ```bash
    cd ui
-   npm install
+   npm install --legacy-peer-deps
+   # If you hit "out of memory" errors during build, increase Node heap limit:
+   export NODE_OPTIONS=--max-old-space-size=4096
    npm run build
    ```
 2. **Setup the Server**:
    ```bash
    cd ../server
-   npm install
+   npm install --legacy-peer-deps
    ```
-3. **Run**:
-   Set `NODE_SERVER_ENVIRONMENT=PROD` and `ROOT_SERVER_DIR` (absolute path to the project root) and start the server:
+3. **Run Production Server**:
+   Navigate to the `server` directory and start it. **Do not use the root `npm start` for production.**
+   
+   Set `NODE_SERVER_ENVIRONMENT=PROD` and `ROOT_SERVER_DIR` (the path to the project root) and start the server:
    ```bash
-   # Windows (PowerShell)
-   $env:NODE_SERVER_ENVIRONMENT="PROD"; $env:ROOT_SERVER_DIR="$(Get-Location)\.."; npm start
-   # Linux/macOS
+   # Linux/macOS (from justpoker/server directory)
+   # ROOT_SERVER_DIR should point to the parent 'justpoker' folder
    NODE_SERVER_ENVIRONMENT=PROD ROOT_SERVER_DIR=$(pwd)/.. npm start
+
+   # Windows (PowerShell - from justpoker/server directory)
+   $env:NODE_SERVER_ENVIRONMENT="PROD"; $env:ROOT_SERVER_DIR="$(get-location)\.."; npm start
    ```
 
 #### 2. Containerized Deployment (Docker)

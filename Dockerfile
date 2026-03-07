@@ -10,6 +10,7 @@ FROM node:20
 
 # set build_env default
 ARG build_env=PROD
+ENV NODE_OPTIONS=--max-old-space-size=4096
 
 # root
 # copy shared files
@@ -20,13 +21,13 @@ COPY . ./
 WORKDIR /justpoker/ui
 # set env for vite front-end
 RUN echo VITE_ENVIRONMENT=${build_env} > .env
-RUN npm install
+RUN npm install --legacy-peer-deps
 RUN npm run build
 
 
 # server
 WORKDIR /justpoker/server
-RUN npm install
+RUN npm install --legacy-peer-deps
 
 # set env for node back-end
 ENV NODE_SERVER_ENVIRONMENT=${build_env}
