@@ -32,7 +32,7 @@ export const CONFIGS: Configs = {
         WS_URL: '129.146.172.12',
         SERVER_PORT: 8080,
         CLIENT_NEED_PORT: true,
-        SECURE_WS: true,
+        SECURE_WS: false,
         HTTPS: true,
     },
 };
